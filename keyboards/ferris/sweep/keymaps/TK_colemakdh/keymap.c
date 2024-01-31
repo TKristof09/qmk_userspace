@@ -30,13 +30,22 @@ enum CustomKeycodes
 
 
 const key_override_t space_ko = ko_make_basic(MOD_MASK_SHIFT, KC_SPC, KC_TAB);
-const key_override_t dot_ko = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, ARROW_MACRO, 0x1);
+const key_override_t dot_ko   = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, ARROW_MACRO, 0x1);
+const key_override_t vimf_ko  = ko_make_basic(MOD_MASK_SHIFT, VIM_F, VIM_FF);
+const key_override_t vimt_ko  = ko_make_basic(MOD_MASK_SHIFT, VIM_T, VIM_TT);
 
 // This globally defines all key overrides to be used
-const key_override_t **key_overrides = (const key_override_t *[]){
+const key_override_t** key_overrides = (const key_override_t*[]){
     &space_ko,
     &dot_ko,
-    NULL // Null terminate the array of overrides!
+    &vimf_ko,
+    &vimt_ko,
+    NULL  // Null terminate the array of overrides!
+};
+
+const uint16_t PROGMEM enter_combo[] = {KC_BSPC, KC_SPC, COMBO_END};
+combo_t key_combos[]                 = {
+    COMBO(enter_combo, KC_ENTER),
 };
 
 
@@ -123,12 +132,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-	[ALPHA_LAYER] = LAYOUT_split_3x5_2(
+	/* [ALPHA_LAYER] = LAYOUT_split_3x5_2(
             KC_Q,        KC_W,        KC_F,        KC_P, KC_B,      KC_J,        KC_L,        KC_U,        KC_Y, KC_SCLN,
             KC_A, WIN_T(KC_R), ALT_T(KC_S), CTL_T(KC_T), KC_G,      KC_M, CTL_T(KC_N), ALT_T(KC_E), WIN_T(KC_I), KC_O,
             KC_Z,        KC_X,        KC_C,        KC_D, KC_V,      KC_K,        KC_H,     KC_COMM,      KC_DOT, KC_SLSH,
 
-                                             KC_LSFT, KC_BSPC,      KC_SPC, TO(SYM_LAYER)),
+                                             KC_LSFT, KC_BSPC,      KC_SPC, TO(SYM_LAYER)), */
+    [ALPHA_LAYER] = LAYOUT_split_3x5_2(
+        KC_Q,        KC_W,        KC_F,        KC_P, KC_B,      KC_J,        KC_L,        KC_U,        KC_Y, KC_SLSH,
+        KC_A, KC_R, KC_S, KC_T, KC_G,      KC_M, KC_N, KC_E, KC_I, KC_O,
+        KC_Z,        KC_X,        KC_C,        KC_D, KC_V,      KC_K,        KC_H,     KC_COMM,      KC_DOT, KC_SCLN,
+
+                                         KC_LSFT, KC_BSPC,      KC_SPC, TO(SYM_LAYER)),
+
 
 	[SYM_LAYER] = LAYOUT_split_3x5_2(
             KC_CIRC, KC_TILD, KC_HASH, KC_COLN, KC_GRV,      KC_PIPE, KC_QUES, KC_UNDS, KC_BSLS, KC_NO,
@@ -181,9 +197,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
+void keyboard_post_init_user(void)
+{
+    // Initialize RGB to static black
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_BLACK);
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+}
+void housekeeping_task_user(void)
+{
+    rgblight_setrgb_at(RGB_RED, 0);
+    rgblight_setrgb_at(RGB_GREEN, 1);
+}
+
+
 #if defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 
 };
 #endif  // defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
-
