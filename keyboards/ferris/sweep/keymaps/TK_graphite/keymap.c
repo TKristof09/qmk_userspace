@@ -16,7 +16,7 @@ enum Layers
 
 enum CustomKeycodes
 {
-    ARROW_MACRO = SAFE_RANGE,
+    DOT_ARROW = SAFE_RANGE,
     VIM_F,
     VIM_FF,
     VIM_T,
@@ -27,13 +27,15 @@ enum CustomKeycodes
     UNDO,
     REDO,
     FIND,
+    NAV_SYMBOL_LAYER,
+    RUN,
+    ALTTAB,
 };
 
-#define ALTTAB LALT(KC_TAB)
 
 //////////////////////////////// KEY OVERRIDES ////////////////////////////////
 const key_override_t space_ko         = ko_make_basic(MOD_MASK_SHIFT, KC_SPC, KC_TAB);
-const key_override_t dot_ko           = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, ARROW_MACRO, 1 << ALPHA_LAYER);
+const key_override_t comma_ko         = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_QUOT, 1 << ALPHA_LAYER);
 const key_override_t vimf_ko          = ko_make_basic(MOD_MASK_SHIFT, VIM_F, VIM_FF);
 const key_override_t vimt_ko          = ko_make_basic(MOD_MASK_SHIFT, VIM_T, VIM_TT);
 const key_override_t vim_undo_redo_ko = ko_make_with_layers(MOD_MASK_SHIFT, KC_U, LCTL(KC_R), 1 << NAV_LAYER);
@@ -42,7 +44,7 @@ const key_override_t vim_ctrlV_ko     = ko_make_with_layers(MOD_MASK_ALT, KC_V, 
 // This globally defines all key overrides to be used
 const key_override_t** key_overrides = (const key_override_t*[]){
     &space_ko,
-    &dot_ko,
+    &comma_ko,
     &vimf_ko,
     &vimt_ko,
     &vim_undo_redo_ko,
@@ -52,7 +54,7 @@ const key_override_t** key_overrides = (const key_override_t*[]){
 
 //////////////////////////////// COMBOS ///////////////////////////////////////
 const uint16_t PROGMEM enter_combo[] = {KC_BSPC, KC_SPC, COMBO_END};
-const uint16_t PROGMEM esc_combo[]   = {KC_BSPC, KC_LSFT, COMBO_END};
+const uint16_t PROGMEM esc_combo[]   = {KC_BSPC, OSM(MOD_LSFT), COMBO_END};
 combo_t key_combos[]                 = {
     COMBO(enter_combo, KC_ENTER),
     COMBO(esc_combo, KC_ESC),
@@ -114,7 +116,9 @@ uint16_t achordion_streak_timeout(uint16_t tap_hold_keycode)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-
+bool is_alt_tab_active = false;  // ADD this near the beginning of keymap.c
+uint16_t alt_tab_timer = 0;      // we will be using them soon.
+                                 //
 bool process_record_user(uint16_t keycode, keyrecord_t* record)
 {
     if(!process_achordion(keycode, record))
@@ -122,13 +126,39 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
         return false;
     }
 
-
+    const uint8_t hold_mods    = get_mods();
+    const uint8_t oneshot_mods = get_oneshot_mods();
+    const uint8_t mods         = hold_mods | oneshot_mods;
     switch(keycode)
     {
-    case ARROW_MACRO:
+    case NAV_SYMBOL_LAYER:
         if(record->event.pressed)
         {
-            SEND_STRING("->");
+            if(mods & MOD_MASK_SHIFT)
+            {
+                layer_move(NAV_LAYER);
+            }
+            else
+            {
+                layer_move(SYM_LAYER);
+            }
+        }
+        return false;
+    case DOT_ARROW:
+        if(record->event.pressed)
+        {
+            if(mods & MOD_MASK_SHIFT)
+            {  // Is shift held?
+                // Temporarily delete shift.
+                del_oneshot_mods(MOD_MASK_SHIFT);
+                unregister_mods(MOD_MASK_SHIFT);
+                SEND_STRING("->");
+                register_mods(mods);  // Restore mods.
+            }
+            else
+            {
+                SEND_STRING(".");
+            }
         }
         return false;
     case VIM_F:
@@ -195,6 +225,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
             SEND_STRING(SS_LCTL("f"));
         }
         return false;
+    case RUN:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LCTL(SS_LSFT(SS_LGUI(SS_LALT(" ")))));
+            layer_move(ALPHA_LAYER);
+        }
+        return false;
+    case ALTTAB:
+        if(record->event.pressed)
+        {
+            if(!is_alt_tab_active)
+            {
+                is_alt_tab_active = true;
+                register_code(KC_LALT);
+            }
+            alt_tab_timer = timer_read();
+            register_code(KC_TAB);
+        }
+        else
+        {
+            unregister_code(KC_TAB);
+        }
+        return true;
     default:
         return true;
     }
@@ -203,17 +256,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
 
 void matrix_scan_user(void)
 {
+    if(is_alt_tab_active)
+    {
+        if(timer_elapsed(alt_tab_timer) > 1000)
+        {
+            unregister_code(KC_LALT);
+            is_alt_tab_active = false;
+        }
+    }
     achordion_task();
 }
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[ALPHA_LAYER] = LAYOUT_split_3x5_2(
-            KC_Q,        KC_L,         KC_D,         KC_W,  KC_Z,      KC_SCLN,        KC_F,         KC_O,         KC_U,    KC_J,
-            KC_N, LGUI_T(KC_R), LALT_T(KC_T), LCTL_T(KC_S), KC_G,      KC_Y,    RCTL_T(KC_H), LALT_T(KC_A), RGUI_T(KC_E),   KC_I,
-            KC_B,        KC_X,         KC_M,         KC_C,  KC_V,      KC_K,           KC_P,         KC_DOT,       KC_COMM, KC_MINS,
+            KC_Q,        KC_L,         KC_D,         KC_W,  KC_Z,      KC_SCLN,        KC_F,              KC_O,          KC_U,    KC_J,
+            KC_N, LGUI_T(KC_R), LALT_T(KC_T), LCTL_T(KC_S), KC_G,      KC_Y,    RCTL_T(KC_H),     LALT_T(KC_A),  RGUI_T(KC_E),   KC_I,
+            KC_B,        KC_X,         KC_M,         KC_C,  KC_V,      KC_K,           KC_P,         DOT_ARROW,       KC_COMM, KC_MINS,
 
-                                             KC_LSFT, KC_BSPC,      KC_SPC, TO(SYM_LAYER)),
+                                          OSM(MOD_LSFT), KC_BSPC,      KC_SPC, NAV_SYMBOL_LAYER),
 	/* [ALPHA_LAYER] = LAYOUT_split_3x5_2(
             KC_Q,        KC_L,        KC_D,        KC_W, KC_Z,      KC_SCLN,     KC_F,        KC_O,        KC_U, KC_J,
             KC_N,        KC_R,        KC_T,        KC_S, KC_G,      KC_Y,        KC_H,        KC_A,        KC_E, KC_I,
@@ -227,7 +288,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_AMPR, KC_ASTR, KC_LBRC, KC_LPRN, KC_LCBR,     KC_RCBR, KC_RPRN, KC_RBRC, KC_DQUO, KC_PLUS,
             KC_DLR,  KC_LT,   KC_GT,   KC_EXLM, KC_PERC,     KC_AT,   KC_MINS, KC_EQL,  KC_QUOT, TO(FN_LAYER),
 
-                            TO(ALPHA_LAYER), KC_SPC,         TO(NAV_LAYER),   TO(NUM_LAYER)),
+                            TO(ALPHA_LAYER), KC_BSPC,        KC_SPC,   TO(NUM_LAYER)),
 
     [NUM_LAYER] = LAYOUT_split_3x5_2(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_P7, KC_P8, KC_P9, KC_NO,
@@ -248,7 +309,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             UNDO,            CUT,    COPY,    PASTE,   FIND,       KC_NO, KC_F4, KC_F5, KC_F6, KC_F11,
             KC_NO,           KC_NO,  KC_NO,   KC_NO,   KC_NO,      KC_NO, KC_F1, KC_F2, KC_F3, KC_F10,
 
-                                    TO(ALPHA_LAYER),   ALTTAB,     TO(GAMING_LAYER), TO(MEDIA_LAYER)),
+                                    TO(ALPHA_LAYER),   RUN,        TO(GAMING_LAYER), TO(MEDIA_LAYER)),
 
     [MEDIA_LAYER] = LAYOUT_split_3x5_2(
             KC_NO,   KC_NO,   KC_VOLU, KC_NO,   KC_NO,      KC_NO, KC_NO,   KC_MS_BTN3, KC_NO,   KC_NO,
@@ -260,7 +321,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [GAMING_LAYER] = LAYOUT_split_3x5_2(
             KC_Q, KC_W, KC_E, KC_R, KC_T,      KC_Y, KC_U, KC_I, KC_O, KC_P,
             KC_A, KC_S, KC_D, KC_F, KC_G,      KC_H, KC_J, KC_K, KC_L, KC_NO,
-            KC_Z, KC_X, KC_C, KC_V, KC_B,      KC_N, KC_M, KC_NO, KC_NO, KC_NO,
+            KC_Z, KC_X, KC_C, KC_V, KC_B,      KC_N, KC_M, KC_NO, KC_NO, KC_ESC,
                          KC_COMM, KC_SPC,      ALTTAB, TO(ALPHA_LAYER)),
 
     [QMK_LAYER] = LAYOUT_split_3x5_2(
