@@ -1,5 +1,8 @@
 #include QMK_KEYBOARD_H
 #include "features/achordion.h"
+#include "keymap_us_international.h"
+#include "sendstring_us_international.h"
+
 
 enum Layers
 {
@@ -10,6 +13,7 @@ enum Layers
     FN_LAYER,
     MEDIA_LAYER,
     GAMING_LAYER,
+    ACCENT_LAYER,
     QMK_LAYER
 };
 
@@ -32,7 +36,6 @@ enum CustomKeycodes
     ALTTAB,
 };
 
-
 //////////////////////////////// KEY OVERRIDES ////////////////////////////////
 const key_override_t space_ko         = ko_make_basic(MOD_MASK_SHIFT, KC_SPC, KC_TAB);
 const key_override_t comma_ko         = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_QUOT, 1 << ALPHA_LAYER);
@@ -53,13 +56,35 @@ const key_override_t** key_overrides = (const key_override_t*[]){
 };
 
 //////////////////////////////// COMBOS ///////////////////////////////////////
+enum Combos
+{
+    ENTER_COMBO,
+    ESC_COMBO,
+    AE_COMBO,
+};
 const uint16_t PROGMEM enter_combo[] = {KC_BSPC, KC_SPC, COMBO_END};
 const uint16_t PROGMEM esc_combo[]   = {KC_BSPC, OSM(MOD_LSFT), COMBO_END};
+const uint16_t PROGMEM ae_combo[]    = {KC_A, KC_E, COMBO_END};
 combo_t key_combos[]                 = {
-    COMBO(enter_combo, KC_ENTER),
-    COMBO(esc_combo, KC_ESC),
+    [ENTER_COMBO] = COMBO(enter_combo, KC_ENTER),
+    [ESC_COMBO]   = COMBO(esc_combo, KC_ESC),
+    [AE_COMBO]    = COMBO(ae_combo, US_AE),
 };
 
+bool combo_should_trigger(uint16_t combo_index, combo_t* combo, uint16_t keycode, keyrecord_t* record)
+{
+    switch(combo_index)
+    {
+    case AE_COMBO:
+        // Only trigger ae combo on the accent layer.
+        if(!layer_state_is(ACCENT_LAYER))
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
 
 //////////////////////////////// TAP-HOLD /////////////////////////////////////
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record)
@@ -131,6 +156,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
     const uint8_t mods         = hold_mods | oneshot_mods;
     switch(keycode)
     {
+    // These become dead keys with US International layout but i only want that on the accent layer, so just send a space after the dead key
+    // if it is not the accent layer
+    case KC_QUOT:
+    case KC_GRV:
+    case KC_DQUO:
+    case KC_TILD:
+    case KC_CIRC:
+        if(record->event.pressed)
+        {
+            if(!layer_state_is(ACCENT_LAYER))
+            {
+                tap_code16(keycode);
+                tap_code16(KC_SPC);
+            }
+            else
+            {
+                tap_code16(keycode);
+            }
+        }
+        return false;
     case NAV_SYMBOL_LAYER:
         if(record->event.pressed)
         {
@@ -284,9 +329,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 	[SYM_LAYER] = LAYOUT_split_3x5_2(
-            KC_CIRC, KC_TILD, KC_HASH, KC_COLN, KC_GRV,      KC_PIPE, KC_QUES, KC_SLSH, KC_BSLS, KC_NO,
-            KC_AMPR, KC_ASTR, KC_LBRC, KC_LPRN, KC_LCBR,     KC_RCBR, KC_RPRN, KC_RBRC, KC_DQUO, KC_PLUS,
-            KC_DLR,  KC_LT,   KC_GT,   KC_EXLM, KC_PERC,     KC_AT,   KC_MINS, KC_EQL,  KC_QUOT, TO(FN_LAYER),
+            KC_CIRC, KC_TILD, KC_HASH, KC_COLN, KC_GRV,      KC_PIPE,          KC_QUES, KC_SLSH, KC_BSLS, KC_NO,
+            KC_AMPR, KC_ASTR, KC_LBRC, KC_LPRN, KC_LCBR,     KC_RCBR,          KC_RPRN, KC_RBRC, KC_DQUO, KC_PLUS,
+            KC_DLR,  KC_LT,   KC_GT,   KC_EXLM, KC_PERC,     KC_AT,   TO(ACCENT_LAYER), KC_EQL,  KC_QUOT, TO(FN_LAYER),
 
                             TO(ALPHA_LAYER), KC_BSPC,        KC_SPC,   TO(NUM_LAYER)),
 
@@ -323,6 +368,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_A, KC_S, KC_D, KC_F, KC_G,      KC_H, KC_J, KC_K, KC_L, KC_NO,
             KC_Z, KC_X, KC_C, KC_V, KC_B,      KC_N, KC_M, KC_NO, KC_NO, KC_ESC,
                          KC_COMM, KC_SPC,      ALTTAB, TO(ALPHA_LAYER)),
+
+    [ACCENT_LAYER] = LAYOUT_split_3x5_2(
+            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO, KC_NO, KC_O,  KC_U,  KC_NO,
+            KC_CIRC, KC_DQUO, KC_QUOT, KC_GRV,  KC_NO,      KC_NO, KC_NO, KC_A,  KC_E,  KC_I,
+            US_SS,   KC_NO,   KC_NO,   US_CCED, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+
+                             TO(ALPHA_LAYER), KC_BSPC,      KC_SPC, KC_NO),
 
     [QMK_LAYER] = LAYOUT_split_3x5_2(
             QK_BOOT, KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, QK_RBT,
