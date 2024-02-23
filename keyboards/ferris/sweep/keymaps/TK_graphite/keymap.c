@@ -38,7 +38,6 @@ enum CustomKeycodes
 
 //////////////////////////////// KEY OVERRIDES ////////////////////////////////
 const key_override_t space_ko         = ko_make_basic(MOD_MASK_SHIFT, KC_SPC, KC_TAB);
-const key_override_t comma_ko         = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_QUOT, 1 << ALPHA_LAYER);
 const key_override_t vimf_ko          = ko_make_basic(MOD_MASK_SHIFT, VIM_F, VIM_FF);
 const key_override_t vimt_ko          = ko_make_basic(MOD_MASK_SHIFT, VIM_T, VIM_TT);
 const key_override_t vim_undo_redo_ko = ko_make_with_layers(MOD_MASK_SHIFT, KC_U, LCTL(KC_R), 1 << NAV_LAYER);
@@ -47,7 +46,6 @@ const key_override_t vim_ctrlV_ko     = ko_make_with_layers(MOD_MASK_ALT, KC_V, 
 // This globally defines all key overrides to be used
 const key_override_t** key_overrides = (const key_override_t*[]){
     &space_ko,
-    &comma_ko,
     &vimf_ko,
     &vimt_ko,
     &vim_undo_redo_ko,
@@ -176,12 +174,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
             }
         }
         return false;
+    case KC_COMM:
+        if(record->event.pressed)
+        {
+            if((mods & MOD_MASK_SHIFT) && layer_state_is(ALPHA_LAYER))
+            {
+                del_oneshot_mods(MOD_MASK_SHIFT);
+                unregister_mods(MOD_MASK_SHIFT);
+                tap_code16(KC_QUOT);
+                tap_code16(KC_SPC);
+                register_mods(hold_mods);  // Restore mods.
+            }
+            else
+            {
+                tap_code16(KC_COMM);
+            }
+        }
+        return false;
     case NAV_SYMBOL_LAYER:
         if(record->event.pressed)
         {
             if(mods & MOD_MASK_SHIFT)
             {
                 layer_move(NAV_LAYER);
+                // remove shift otherwise it will affect the vim shortcuts
+                unregister_mods(MOD_MASK_SHIFT);
+                del_oneshot_mods(MOD_MASK_SHIFT);
             }
             else
             {
@@ -198,7 +216,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                 del_oneshot_mods(MOD_MASK_SHIFT);
                 unregister_mods(MOD_MASK_SHIFT);
                 SEND_STRING("->");
-                register_mods(mods);  // Restore mods.
+                register_mods(hold_mods);  // Restore mods.
             }
             else
             {
@@ -268,6 +286,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
         if(record->event.pressed)
         {
             SEND_STRING(SS_LCTL("f"));
+            layer_move(ALPHA_LAYER);
         }
         return false;
     case RUN:
@@ -320,12 +339,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_B,        KC_X,         KC_M,         KC_C,  KC_V,      KC_K,           KC_P,         DOT_ARROW,       KC_COMM, KC_MINS,
 
                                           OSM(MOD_LSFT), KC_BSPC,      KC_SPC, NAV_SYMBOL_LAYER),
-	/* [ALPHA_LAYER] = LAYOUT_split_3x5_2(
-            KC_Q,        KC_L,        KC_D,        KC_W, KC_Z,      KC_SCLN,     KC_F,        KC_O,        KC_U, KC_J,
-            KC_N,        KC_R,        KC_T,        KC_S, KC_G,      KC_Y,        KC_H,        KC_A,        KC_E, KC_I,
-            KC_B,        KC_X,        KC_M,        KC_C, KC_V,      KC_K,        KC_P,      KC_DOT,     KC_COMM, KC_MINS,
-
-                                             KC_LSFT, KC_BSPC,      KC_SPC, TO(SYM_LAYER)), */
 
 
 	[SYM_LAYER] = LAYOUT_split_3x5_2(
@@ -337,10 +350,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [NUM_LAYER] = LAYOUT_split_3x5_2(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_P7, KC_P8, KC_P9, KC_NO,
-            KC_PDOT, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS,    KC_BSPC, KC_P4, KC_P5, KC_P6, KC_EQL,
+            KC_PDOT, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS,    KC_P0, KC_P4, KC_P5, KC_P6, KC_EQL,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_P1, KC_P2, KC_P3, KC_NO,
 
-                        TO(ALPHA_LAYER), TO(FN_LAYER),      KC_P0, TO(NAV_LAYER)),
+                               TO(ALPHA_LAYER), KC_BSPC,    KC_SPC, TO(NAV_LAYER)),
 
     [NAV_LAYER] = LAYOUT_split_3x5_2(
             KC_NO,      KC_Y,  KC_P,    VIM_F,  KC_LCBR,      LCTL(KC_U),    KC_P2,   KC_P3,   KC_P4, KC_NO,
