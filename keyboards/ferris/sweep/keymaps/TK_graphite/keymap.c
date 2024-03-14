@@ -10,6 +10,7 @@ enum Layers
     SYM_LAYER,
     NUM_LAYER,
     NAV_LAYER,
+    WIN_NAV_LAYER,
     FN_LAYER,
     MEDIA_LAYER,
     GAMING_LAYER,
@@ -32,8 +33,18 @@ enum CustomKeycodes
     REDO,
     FIND,
     NAV_SYMBOL_LAYER,
+    ESC_ALPHA_LAYER,
     RUN,
     ALTTAB,
+
+    WIN_1,
+    WIN_2,
+    WIN_3,
+    WIN_4,
+    WIN_5,
+    WIN_6,
+    WIN_7,
+    WIN_8,
 };
 
 //////////////////////////////// KEY OVERRIDES ////////////////////////////////
@@ -59,14 +70,17 @@ enum Combos
     ENTER_COMBO,
     ESC_COMBO,
     AE_COMBO,
+    ESC_LAYER_COMBO,
 };
-const uint16_t PROGMEM enter_combo[] = {KC_BSPC, KC_SPC, COMBO_END};
-const uint16_t PROGMEM esc_combo[]   = {KC_BSPC, OSM(MOD_LSFT), COMBO_END};
-const uint16_t PROGMEM ae_combo[]    = {KC_A, KC_E, COMBO_END};
-combo_t key_combos[]                 = {
-    [ENTER_COMBO] = COMBO(enter_combo, KC_ENTER),
-    [ESC_COMBO]   = COMBO(esc_combo, KC_ESC),
-    [AE_COMBO]    = COMBO(ae_combo, US_AE),
+const uint16_t PROGMEM enter_combo[]     = {KC_BSPC, KC_SPC, COMBO_END};
+const uint16_t PROGMEM esc_combo[]       = {KC_BSPC, OSM(MOD_LSFT), COMBO_END};
+const uint16_t PROGMEM esc_layer_combo[] = {KC_BSPC, TO(ALPHA_LAYER), COMBO_END};
+const uint16_t PROGMEM ae_combo[]        = {KC_A, KC_E, COMBO_END};
+combo_t key_combos[]                     = {
+    [ENTER_COMBO]     = COMBO(enter_combo, KC_ENTER),
+    [ESC_COMBO]       = COMBO(esc_combo, KC_ESC),
+    [AE_COMBO]        = COMBO(ae_combo, US_AE),
+    [ESC_LAYER_COMBO] = COMBO(esc_layer_combo, ESC_ALPHA_LAYER),
 };
 
 bool combo_should_trigger(uint16_t combo_index, combo_t* combo, uint16_t keycode, keyrecord_t* record)
@@ -207,6 +221,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
             }
         }
         return false;
+    case ESC_ALPHA_LAYER:
+        if(record->event.pressed)
+        {
+            layer_move(ALPHA_LAYER);
+            tap_code16(KC_ESC);
+        }
+        return false;
     case DOT_ARROW:
         if(record->event.pressed)
         {
@@ -312,6 +333,55 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
             unregister_code(KC_TAB);
         }
         return true;
+
+    case WIN_1:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LGUI("1"));
+        }
+        return false;
+    case WIN_2:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LGUI("2"));
+        }
+        return false;
+    case WIN_3:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LGUI("3"));
+        }
+        return false;
+    case WIN_4:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LGUI("4"));
+        }
+        return false;
+    case WIN_5:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LGUI("5"));
+        }
+        return false;
+    case WIN_6:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LGUI("6"));
+        }
+        return false;
+    case WIN_7:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LGUI("7"));
+        }
+        return false;
+    case WIN_8:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LGUI("8"));
+        }
+        return false;
     default:
         return true;
     }
@@ -330,7 +400,6 @@ void matrix_scan_user(void)
     }
     achordion_task();
 }
-
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[ALPHA_LAYER] = LAYOUT_split_3x5_2(
@@ -351,16 +420,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [NUM_LAYER] = LAYOUT_split_3x5_2(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_P7, KC_P8, KC_P9, KC_NO,
             KC_PDOT, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS,    KC_P0, KC_P4, KC_P5, KC_P6, KC_EQL,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_P1, KC_P2, KC_P3, KC_NO,
+            KC_NO,   KC_NO,   KC_NO,   KC_COMM, KC_NO,      KC_NO,   KC_P1, KC_P2, KC_P3, KC_NO,
 
-                               TO(ALPHA_LAYER), KC_BSPC,    KC_SPC, TO(NAV_LAYER)),
+                               TO(ALPHA_LAYER), KC_BSPC,    KC_SPC, TO(WIN_NAV_LAYER)),
 
     [NAV_LAYER] = LAYOUT_split_3x5_2(
-            KC_NO,      KC_Y,  KC_P,    VIM_F,  KC_LCBR,      LCTL(KC_U),    KC_P2,   KC_P3,   KC_P4, KC_NO,
-            KC_W,       KC_B,  KC_E,    VIM_T,  KC_RCBR,      LCTL(KC_D),    KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,
-            LSFT(KC_V), KC_D,  KC_CIRC, KC_DLR, KC_U,         KC_NO,         KC_COMM, KC_SCLN, KC_NO, KC_ESC,
+            KC_NO,      KC_Y,        KC_P,    VIM_F,  KC_LCBR,      LCTL(KC_U),    KC_P2,   KC_P3,   KC_P4, KC_NO,
+            KC_W,       KC_B,        KC_E,    VIM_T,  KC_RCBR,      LCTL(KC_D),    KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,
+            LSFT(KC_V), LCTL(KC_V),  KC_V,  KC_CIRC,  KC_DLR,       KC_NO,         KC_COMM, KC_SCLN, KC_NO, KC_ESC,
 
-                              TO(ALPHA_LAYER),  KC_LALT,      KC_LSFT, KC_V),
+                                    TO(ALPHA_LAYER),  KC_LALT,      KC_LSFT, KC_LCTL),
+
+    [WIN_NAV_LAYER] = LAYOUT_split_3x5_2(
+            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+            WIN_1, WIN_2, WIN_3, WIN_4, KC_NO,      KC_NO, WIN_5, WIN_6, WIN_7, WIN_8,
+            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+
+                     TO(ALPHA_LAYER), KC_LSFT,      ALTTAB, KC_LCTL),
 
     [FN_LAYER] = LAYOUT_split_3x5_2(
             TO(QMK_LAYER),   KC_NO,  KC_NO,   KC_NO,   KC_NO,      KC_NO, KC_F7, KC_F8, KC_F9, KC_F12,
