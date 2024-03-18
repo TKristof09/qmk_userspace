@@ -32,7 +32,6 @@ enum CustomKeycodes
     UNDO,
     REDO,
     FIND,
-    NAV_SYMBOL_LAYER,
     ESC_ALPHA_LAYER,
     RUN,
     ALTTAB,
@@ -46,6 +45,8 @@ enum CustomKeycodes
     WIN_7,
     WIN_8,
 };
+
+#define SYM_WIN_LAYER LT(0, KC_1)
 
 //////////////////////////////// KEY OVERRIDES ////////////////////////////////
 const key_override_t space_ko         = ko_make_basic(MOD_MASK_SHIFT, KC_SPC, KC_TAB);
@@ -71,16 +72,19 @@ enum Combos
     ESC_COMBO,
     AE_COMBO,
     ESC_LAYER_COMBO,
+    NAV_LAYER_COMBO,
 };
 const uint16_t PROGMEM enter_combo[]     = {KC_BSPC, KC_SPC, COMBO_END};
 const uint16_t PROGMEM esc_combo[]       = {KC_BSPC, OSM(MOD_LSFT), COMBO_END};
 const uint16_t PROGMEM esc_layer_combo[] = {KC_BSPC, TO(ALPHA_LAYER), COMBO_END};
+const uint16_t PROGMEM nav_layer_combo[] = {KC_SPC, SYM_WIN_LAYER, COMBO_END};
 const uint16_t PROGMEM ae_combo[]        = {KC_A, KC_E, COMBO_END};
 combo_t key_combos[]                     = {
     [ENTER_COMBO]     = COMBO(enter_combo, KC_ENTER),
     [ESC_COMBO]       = COMBO(esc_combo, KC_ESC),
     [AE_COMBO]        = COMBO(ae_combo, US_AE),
     [ESC_LAYER_COMBO] = COMBO(esc_layer_combo, ESC_ALPHA_LAYER),
+    [NAV_LAYER_COMBO] = COMBO(nav_layer_combo, TO(NAV_LAYER)),
 };
 
 bool combo_should_trigger(uint16_t combo_index, combo_t* combo, uint16_t keycode, keyrecord_t* record)
@@ -119,6 +123,15 @@ bool achordion_chord(uint16_t tap_hold_keycode,
                      uint16_t other_keycode,
                      keyrecord_t* other_record)
 {
+    if(tap_hold_keycode == SYM_WIN_LAYER)
+    {
+        // if the other key is on the home row, then consider it a hold (this is where the buttons for switching windows are on WIN_NAV_LAYER)
+        // this avoids having to hold for a long time when switching to windows that have the key on the same side as the layer switch key
+        if(other_record->event.key.row % (MATRIX_ROWS / 2) == 1)
+        {
+            return true;
+        }
+    }
     return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
@@ -205,19 +218,47 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
             }
         }
         return false;
-    case NAV_SYMBOL_LAYER:
-        if(record->event.pressed)
+    // case NAV_SYMBOL_LAYER:
+    //     if(record->event.pressed)
+    //     {
+    //         if(mods & MOD_MASK_SHIFT)
+    //         {
+    //             layer_move(NAV_LAYER);
+    //             // remove shift otherwise it will affect the vim shortcuts
+    //             unregister_mods(MOD_MASK_SHIFT);
+    //             del_oneshot_mods(MOD_MASK_SHIFT);
+    //         }
+    //         else
+    //         {
+    //             layer_move(SYM_LAYER);
+    //         }
+    //     }
+    //     return false;
+    case SYM_WIN_LAYER:
+        if(record->tap.count > 0)  // tap
         {
-            if(mods & MOD_MASK_SHIFT)
+            if(record->event.pressed)
             {
-                layer_move(NAV_LAYER);
-                // remove shift otherwise it will affect the vim shortcuts
-                unregister_mods(MOD_MASK_SHIFT);
-                del_oneshot_mods(MOD_MASK_SHIFT);
+                // tap press
+                layer_move(SYM_LAYER);
             }
             else
             {
-                layer_move(SYM_LAYER);
+                // tap release
+            }
+        }
+        else  // hold
+        {
+            // emulate a momentary layer hold key, like MO
+            if(record->event.pressed)
+            {
+                // hold press
+                layer_move(WIN_NAV_LAYER);
+            }
+            else
+            {
+                // hold release
+                layer_move(ALPHA_LAYER);
             }
         }
         return false;
@@ -407,22 +448,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_N, LGUI_T(KC_R), LALT_T(KC_T), LCTL_T(KC_S), KC_G,      KC_Y,    RCTL_T(KC_H),     LALT_T(KC_A),  RGUI_T(KC_E),   KC_I,
             KC_B,        KC_X,         KC_M,         KC_C,  KC_V,      KC_K,           KC_P,         DOT_ARROW,       KC_COMM, KC_MINS,
 
-                                          OSM(MOD_LSFT), KC_BSPC,      KC_SPC, NAV_SYMBOL_LAYER),
+                                          OSM(MOD_LSFT), KC_BSPC,      KC_SPC, SYM_WIN_LAYER),
 
 
 	[SYM_LAYER] = LAYOUT_split_3x5_2(
-            KC_CIRC, KC_TILD, KC_HASH, KC_COLN, KC_GRV,      KC_PIPE,          KC_QUES, KC_SLSH, KC_BSLS, KC_NO,
-            KC_AMPR, KC_ASTR, KC_LBRC, KC_LPRN, KC_LCBR,     KC_RCBR,          KC_RPRN, KC_RBRC, KC_DQUO, KC_PLUS,
-            KC_DLR,  KC_LT,   KC_GT,   KC_EXLM, KC_PERC,     KC_AT,   TO(ACCENT_LAYER), KC_EQL,  KC_QUOT, TO(FN_LAYER),
+            KC_CIRC, KC_TILD, KC_HASH, KC_COLN, KC_GRV,      KC_PIPE, KC_PERC, KC_SLSH, KC_BSLS, KC_NO,
+            KC_AMPR, KC_ASTR, KC_LBRC, KC_LPRN, KC_LCBR,     KC_RCBR, KC_RPRN, KC_RBRC, KC_DQUO, KC_PLUS,
+            KC_DLR,  KC_LT,   KC_GT,   KC_EXLM, KC_PERC,     KC_AT,   KC_QUES, KC_EQL,  KC_QUOT, TO(FN_LAYER),
 
                             TO(ALPHA_LAYER), KC_BSPC,        KC_SPC,   TO(NUM_LAYER)),
 
     [NUM_LAYER] = LAYOUT_split_3x5_2(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_P7, KC_P8, KC_P9, KC_NO,
-            KC_PDOT, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS,    KC_P0, KC_P4, KC_P5, KC_P6, KC_EQL,
+            KC_PDOT, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS,    KC_P0,   KC_P4, KC_P5, KC_P6, KC_EQL,
             KC_NO,   KC_NO,   KC_NO,   KC_COMM, KC_NO,      KC_NO,   KC_P1, KC_P2, KC_P3, KC_NO,
 
-                               TO(ALPHA_LAYER), KC_BSPC,    KC_SPC, TO(WIN_NAV_LAYER)),
+                               TO(ALPHA_LAYER), KC_BSPC,    KC_SPC, TO(ACCENT_LAYER)),
 
     [NAV_LAYER] = LAYOUT_split_3x5_2(
             KC_NO,      KC_Y,        KC_P,    VIM_F,  KC_LCBR,      LCTL(KC_U),    KC_P2,   KC_P3,   KC_P4, KC_NO,
@@ -432,11 +473,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     TO(ALPHA_LAYER),  KC_LALT,      KC_LSFT, KC_LCTL),
 
     [WIN_NAV_LAYER] = LAYOUT_split_3x5_2(
-            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-            WIN_1, WIN_2, WIN_3, WIN_4, KC_NO,      KC_NO, WIN_5, WIN_6, WIN_7, WIN_8,
-            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+            KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+            WIN_1, WIN_2, WIN_3, WIN_4,  KC_NO,      KC_NO, WIN_5, WIN_6, WIN_7, WIN_8,
+            KC_NO, KC_NO, KC_NO, ALTTAB, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
 
-                     TO(ALPHA_LAYER), KC_LSFT,      ALTTAB, KC_LCTL),
+                            LCTL(KC_LSFT), RUN,      KC_NO, KC_NO),
 
     [FN_LAYER] = LAYOUT_split_3x5_2(
             TO(QMK_LAYER),   KC_NO,  KC_NO,   KC_NO,   KC_NO,      KC_NO, KC_F7, KC_F8, KC_F9, KC_F12,
