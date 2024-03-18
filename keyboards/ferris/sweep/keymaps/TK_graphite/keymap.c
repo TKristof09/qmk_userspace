@@ -516,12 +516,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
+// turn off power led
+void keyboard_pre_init_user(void)
+{
+    // Set our LED pin as output
+    setPinOutput(24);
+    // Turn the LED off
+    // (Due to technical reasons, high is off and low is on)
+    writePinHigh(24);
+}
 void keyboard_post_init_user(void)
 {
     // Initialize RGB to static black
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_BLACK);
     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+}
+void caps_word_set_user(bool active)
+{
+    if(active)
+    {
+        // Do something when Caps Word activates.
+        setPinOutput(24);
+        // Turn the LED off
+        // (Due to technical reasons, high is off and low is on)
+        writePinLow(24);
+    }
+    else
+    {
+        // Do something when Caps Word deactivates.
+        setPinOutput(24);
+        // Turn the LED off
+        // (Due to technical reasons, high is off and low is on)
+        writePinHigh(24);
+    }
 }
 void housekeeping_task_user(void)
 {
@@ -540,6 +568,9 @@ void housekeeping_task_user(void)
     case NAV_LAYER:
         rgblight_setrgb_at(RGB_BLUE, 0);
         break;
+    case WIN_NAV_LAYER:
+        rgblight_setrgb_at(RGB_PURPLE, 0);
+        break;
     case FN_LAYER:
         rgblight_setrgb_at(RGB_YELLOW, 0);
         break;
@@ -548,6 +579,12 @@ void housekeeping_task_user(void)
         break;
     case GAMING_LAYER:
         rgblight_setrgb_at(RGB_TEAL, 0);
+        break;
+    case ACCENT_LAYER:
+        rgblight_setrgb_at(RGB_ORANGE, 0);
+        break;
+    case QMK_LAYER:
+        rgblight_setrgb_at(RGB_WHITE, 0);
         break;
     }
 }
