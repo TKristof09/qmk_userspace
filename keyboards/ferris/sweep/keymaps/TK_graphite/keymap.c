@@ -44,12 +44,19 @@ enum CustomKeycodes
     WIN_6,
     WIN_7,
     WIN_8,
+    WIN_FULL,
+    WIN_MIN,
+    WIN_LEFT,
+    WIN_RIGHT,
+    WIN_SCL,
+    WIN_SCR,
 };
 
 #define SYM_WIN_LAYER LT(0, KC_1)
+#define NAV_HOLD      LT(NAV_LAYER, KC_SPC)
 
 //////////////////////////////// KEY OVERRIDES ////////////////////////////////
-const key_override_t space_ko         = ko_make_basic(MOD_MASK_SHIFT, KC_SPC, KC_TAB);
+const key_override_t space_ko         = ko_make_basic(MOD_MASK_SHIFT, NAV_HOLD, KC_TAB);
 const key_override_t vimf_ko          = ko_make_basic(MOD_MASK_SHIFT, VIM_F, VIM_FF);
 const key_override_t vimt_ko          = ko_make_basic(MOD_MASK_SHIFT, VIM_T, VIM_TT);
 const key_override_t vim_undo_redo_ko = ko_make_with_layers(MOD_MASK_SHIFT, KC_U, LCTL(KC_R), 1 << NAV_LAYER);
@@ -72,19 +79,19 @@ enum Combos
     ESC_COMBO,
     AE_COMBO,
     ESC_LAYER_COMBO,
-    NAV_LAYER_COMBO,
+    NUM_LAYER_COMBO,
 };
-const uint16_t PROGMEM enter_combo[]     = {KC_BSPC, KC_SPC, COMBO_END};
+const uint16_t PROGMEM enter_combo[]     = {KC_BSPC, NAV_HOLD, COMBO_END};
 const uint16_t PROGMEM esc_combo[]       = {KC_BSPC, OSM(MOD_LSFT), COMBO_END};
 const uint16_t PROGMEM esc_layer_combo[] = {KC_BSPC, TO(ALPHA_LAYER), COMBO_END};
-const uint16_t PROGMEM nav_layer_combo[] = {KC_SPC, SYM_WIN_LAYER, COMBO_END};
+const uint16_t PROGMEM num_layer_combo[] = {NAV_HOLD, SYM_WIN_LAYER, COMBO_END};
 const uint16_t PROGMEM ae_combo[]        = {KC_A, KC_E, COMBO_END};
 combo_t key_combos[]                     = {
     [ENTER_COMBO]     = COMBO(enter_combo, KC_ENTER),
     [ESC_COMBO]       = COMBO(esc_combo, KC_ESC),
     [AE_COMBO]        = COMBO(ae_combo, US_AE),
     [ESC_LAYER_COMBO] = COMBO(esc_layer_combo, ESC_ALPHA_LAYER),
-    [NAV_LAYER_COMBO] = COMBO(nav_layer_combo, TO(NAV_LAYER)),
+    [NUM_LAYER_COMBO] = COMBO(num_layer_combo, TO(NUM_LAYER)),
 };
 
 bool combo_should_trigger(uint16_t combo_index, combo_t* combo, uint16_t keycode, keyrecord_t* record)
@@ -132,6 +139,8 @@ bool achordion_chord(uint16_t tap_hold_keycode,
             return true;
         }
     }
+    if(tap_hold_keycode == NAV_HOLD)
+        return true;
     return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
@@ -423,6 +432,42 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
             SEND_STRING(SS_LGUI("8"));
         }
         return false;
+    case WIN_FULL:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LGUI(SS_TAP(X_UP)));
+        }
+        return false;
+    case WIN_MIN:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LGUI(SS_TAP(X_DOWN)));
+        }
+        return false;
+    case WIN_LEFT:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LGUI(SS_TAP(X_LEFT)));
+        }
+        return false;
+    case WIN_RIGHT:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LGUI(SS_TAP(X_RIGHT)));
+        }
+        return false;
+    case WIN_SCL:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LGUI(SS_LSFT(SS_TAP(X_LEFT))));
+        }
+        return false;
+    case WIN_SCR:
+        if(record->event.pressed)
+        {
+            SEND_STRING(SS_LGUI(SS_LSFT(SS_TAP(X_RIGHT))));
+        }
+        return false;
     default:
         return true;
     }
@@ -444,38 +489,38 @@ void matrix_scan_user(void)
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[ALPHA_LAYER] = LAYOUT_split_3x5_2(
-            KC_Q,        KC_L,         KC_D,         KC_W,  KC_Z,      KC_SCLN,        KC_F,              KC_O,          KC_U,    KC_J,
-            KC_N, LGUI_T(KC_R), LALT_T(KC_T), LCTL_T(KC_S), KC_G,      KC_Y,    RCTL_T(KC_H),     LALT_T(KC_A),  RGUI_T(KC_E),   KC_I,
-            KC_B,        KC_X,         KC_M,         KC_C,  KC_V,      KC_K,           KC_P,         DOT_ARROW,       KC_COMM, KC_MINS,
+            KC_Q,         KC_L,         KC_D,         KC_W,             KC_Z,          KC_SCLN,        KC_F,          KC_O,          KC_U,          KC_J,
+            MEH_T(KC_N),  LGUI_T(KC_R), LALT_T(KC_T), LCTL_T(KC_S),     KC_G,          KC_Y,    RCTL_T(KC_H),  LALT_T(KC_A),  RGUI_T(KC_E),   MEH_T(KC_I),
+            KC_B,         KC_X,         KC_M,         KC_C,             KC_V,          KC_K,           KC_P,     DOT_ARROW,       KC_COMM,        KC_MINS,
 
-                                          OSM(MOD_LSFT), KC_BSPC,      KC_SPC, SYM_WIN_LAYER),
+                                                         OSM(MOD_LSFT), KC_BSPC,      NAV_HOLD,  SYM_WIN_LAYER),
 
 
 	[SYM_LAYER] = LAYOUT_split_3x5_2(
-            KC_CIRC, KC_TILD, KC_HASH, KC_COLN, KC_GRV,      KC_PIPE, KC_PERC, KC_SLSH, KC_BSLS, KC_NO,
+            KC_CIRC, KC_TILD, KC_HASH, KC_COLN, KC_GRV,      KC_SCLN, KC_PERC, KC_SLSH, KC_BSLS, KC_NO,
             KC_AMPR, KC_ASTR, KC_LBRC, KC_LPRN, KC_LCBR,     KC_RCBR, KC_RPRN, KC_RBRC, KC_DQUO, KC_PLUS,
-            KC_DLR,  KC_LT,   KC_GT,   KC_EXLM, KC_PERC,     KC_AT,   KC_QUES, KC_EQL,  KC_QUOT, TO(FN_LAYER),
+            KC_DLR,  KC_LT,   KC_GT,   KC_EXLM, KC_PIPE,     KC_AT,   KC_QUES, KC_EQL,  KC_QUOT, TO(FN_LAYER),
 
-                            TO(ALPHA_LAYER), KC_BSPC,        KC_SPC,   TO(NUM_LAYER)),
+                            TO(ALPHA_LAYER), KC_BSPC,        NAV_HOLD,   TO(ACCENT_LAYER)),
 
     [NUM_LAYER] = LAYOUT_split_3x5_2(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_P7, KC_P8, KC_P9, KC_NO,
             KC_PDOT, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS,    KC_P0,   KC_P4, KC_P5, KC_P6, KC_EQL,
             KC_NO,   KC_NO,   KC_NO,   KC_COMM, KC_NO,      KC_NO,   KC_P1, KC_P2, KC_P3, KC_NO,
 
-                               TO(ALPHA_LAYER), KC_BSPC,    KC_SPC, TO(ACCENT_LAYER)),
+                               TO(ALPHA_LAYER), KC_BSPC,    NAV_HOLD, TO(SYM_LAYER)),
 
     [NAV_LAYER] = LAYOUT_split_3x5_2(
-            KC_NO,      KC_Y,        KC_P,    VIM_F,  KC_LCBR,      LCTL(KC_U),    KC_P2,   KC_P3,   KC_P4, KC_NO,
-            KC_W,       KC_B,        KC_E,    VIM_T,  KC_RCBR,      LCTL(KC_D),    KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,
+            KC_NO,      KC_Y,        KC_P,  KC_LSFT,  KC_LCBR,      LCTL(KC_U),    KC_P2,   KC_P3,   KC_P4, KC_NO,
+            KC_W,       KC_B,        KC_E,  KC_LCTL,  KC_RCBR,      LCTL(KC_D),    KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,
             LSFT(KC_V), LCTL(KC_V),  KC_V,  KC_CIRC,  KC_DLR,       KC_NO,         KC_COMM, KC_SCLN, KC_NO, KC_ESC,
 
-                                    TO(ALPHA_LAYER),  KC_LALT,      KC_LSFT, KC_LCTL),
+                                    TO(ALPHA_LAYER),  KC_LALT,      KC_NO, KC_NO),
 
     [WIN_NAV_LAYER] = LAYOUT_split_3x5_2(
-            KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-            WIN_1, WIN_2, WIN_3, WIN_4,  KC_NO,      KC_NO, WIN_5, WIN_6, WIN_7, WIN_8,
-            KC_NO, KC_NO, KC_NO, ALTTAB, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+            KC_NO, WIN_MIN,  WIN_FULL,  KC_NO,  KC_NO,      KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,
+            WIN_1, WIN_2,    WIN_3,     WIN_4,  WIN_SCL,    WIN_SCR, WIN_5, WIN_6, WIN_7, WIN_8,
+            KC_NO, WIN_LEFT, WIN_RIGHT, ALTTAB, KC_NO,      KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,
 
                             LCTL(KC_LSFT), RUN,      KC_NO, KC_NO),
 
@@ -532,13 +577,30 @@ void keyboard_post_init_user(void)
     rgblight_sethsv_noeeprom(HSV_BLACK);
     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
 }
+void oneshot_mods_changed_user(uint8_t mods)
+{
+    if(mods & MOD_MASK_SHIFT)
+    {
+        setPinOutput(24);
+        // Turn the LED on
+        // (Due to technical reasons, high is off and low is on)
+        writePinLow(24);
+    }
+    else
+    {
+        setPinOutput(24);
+        // Turn the LED off
+        // (Due to technical reasons, high is off and low is on)
+        writePinHigh(24);
+    }
+}
 void caps_word_set_user(bool active)
 {
     if(active)
     {
         // Do something when Caps Word activates.
         setPinOutput(24);
-        // Turn the LED off
+        // Turn the LED on
         // (Due to technical reasons, high is off and low is on)
         writePinLow(24);
     }
