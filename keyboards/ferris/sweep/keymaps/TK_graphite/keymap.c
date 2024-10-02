@@ -50,6 +50,12 @@ enum CustomKeycodes
     WIN_RIGHT,
     WIN_SCL,
     WIN_SCR,
+
+    ACC_E,
+    ACC_A,
+    ACC_I,
+    ACC_O,
+    ACC_U,
 };
 
 #define SYM_WIN_LAYER LT(0, KC_1)
@@ -76,24 +82,26 @@ const key_override_t** key_overrides = (const key_override_t*[]){
 enum Combos
 {
     ENTER_COMBO,
+    ENTER_GAMING_COMBO,
     ESC_COMBO,
     AE_COMBO,
     ESC_LAYER_COMBO,
     NUM_LAYER_COMBO,
 };
-const uint16_t PROGMEM enter_combo[]     = {KC_BSPC, NAV_HOLD, COMBO_END};
-const uint16_t PROGMEM esc_combo[]       = {KC_BSPC, OSM(MOD_LSFT), COMBO_END};
-const uint16_t PROGMEM esc_layer_combo[] = {KC_BSPC, TO(ALPHA_LAYER), COMBO_END};
-const uint16_t PROGMEM num_layer_combo[] = {NAV_HOLD, SYM_WIN_LAYER, COMBO_END};
-const uint16_t PROGMEM ae_combo[]        = {KC_A, KC_E, COMBO_END};
-combo_t key_combos[]                     = {
-    [ENTER_COMBO]     = COMBO(enter_combo, KC_ENTER),
-    [ESC_COMBO]       = COMBO(esc_combo, KC_ESC),
-    [AE_COMBO]        = COMBO(ae_combo, US_AE),
-    [ESC_LAYER_COMBO] = COMBO(esc_layer_combo, ESC_ALPHA_LAYER),
-    [NUM_LAYER_COMBO] = COMBO(num_layer_combo, TO(NUM_LAYER)),
+const uint16_t PROGMEM enter_combo[]        = {KC_BSPC, NAV_HOLD, COMBO_END};
+const uint16_t PROGMEM enter_gaming_combo[] = {KC_BSPC, KC_SPC, COMBO_END};
+const uint16_t PROGMEM esc_combo[]          = {KC_BSPC, OSM(MOD_LSFT), COMBO_END};
+const uint16_t PROGMEM esc_layer_combo[]    = {KC_BSPC, TO(ALPHA_LAYER), COMBO_END};
+const uint16_t PROGMEM num_layer_combo[]    = {NAV_HOLD, SYM_WIN_LAYER, COMBO_END};
+const uint16_t PROGMEM ae_combo[]           = {KC_A, KC_E, COMBO_END};
+combo_t key_combos[]                        = {
+    [ENTER_COMBO]        = COMBO(enter_combo, KC_ENTER),
+    [ENTER_GAMING_COMBO] = COMBO(enter_gaming_combo, KC_ENTER),
+    [ESC_COMBO]          = COMBO(esc_combo, KC_ESC),
+    [AE_COMBO]           = COMBO(ae_combo, US_AE),
+    [ESC_LAYER_COMBO]    = COMBO(esc_layer_combo, ESC_ALPHA_LAYER),
+    [NUM_LAYER_COMBO]    = COMBO(num_layer_combo, TO(NUM_LAYER)),
 };
-
 bool combo_should_trigger(uint16_t combo_index, combo_t* combo, uint16_t keycode, keyrecord_t* record)
 {
     switch(combo_index)
@@ -468,6 +476,42 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
             SEND_STRING(SS_LGUI(SS_LSFT(SS_TAP(X_RIGHT))));
         }
         return false;
+
+    case ACC_E:
+        if(record->event.pressed)
+        {
+            tap_code(KC_E);
+            layer_move(ALPHA_LAYER);
+        }
+        return false;
+    case ACC_A:
+        if(record->event.pressed)
+        {
+            tap_code(KC_A);
+            layer_move(ALPHA_LAYER);
+        }
+        return false;
+    case ACC_O:
+        if(record->event.pressed)
+        {
+            tap_code(KC_O);
+            layer_move(ALPHA_LAYER);
+        }
+        return false;
+    case ACC_U:
+        if(record->event.pressed)
+        {
+            tap_code(KC_U);
+            layer_move(ALPHA_LAYER);
+        }
+        return false;
+    case ACC_I:
+        if(record->event.pressed)
+        {
+            tap_code(KC_I);
+            layer_move(ALPHA_LAYER);
+        }
+        return false;
     default:
         return true;
     }
@@ -539,17 +583,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           TO(ALPHA_LAYER), KC_MS_BTN1,      KC_MS_BTN2, KC_NO),
 
     [GAMING_LAYER] = LAYOUT_split_3x5_2(
-            KC_Q, KC_W, KC_E, KC_R, KC_T,      KC_Y, KC_U, KC_I, KC_O, KC_P,
-            KC_A, KC_S, KC_D, KC_F, KC_G,      KC_H, KC_J, KC_K, KC_L, KC_NO,
-            KC_Z, KC_X, KC_C, KC_V, KC_B,      KC_N, KC_M, KC_NO, KC_NO, KC_ESC,
-                         KC_COMM, KC_SPC,      ALTTAB, TO(ALPHA_LAYER)),
+            // KC_Q, KC_W, KC_E, KC_R, KC_T,      KC_Y, KC_U, KC_I, KC_O, KC_P,
+            // KC_A, KC_S, KC_D, KC_F, KC_G,      KC_H, KC_J, KC_K, KC_L, KC_NO,
+            // KC_Z, KC_X, KC_C, KC_V, KC_B,      KC_N, KC_M, KC_NO, KC_NO, KC_ESC,
+            //              KC_COMM, KC_SPC,      ALTTAB, TO(ALPHA_LAYER)),
+
+            KC_Q, KC_L, KC_D, KC_W, KC_Z,      TO(ALPHA_LAYER),  KC_F, KC_O, KC_U, KC_J,
+            KC_N, KC_R, KC_T, KC_S, KC_G,      KC_Y,     KC_H, KC_A, KC_E, KC_I,
+            KC_B, KC_X, KC_M, KC_C, KC_V,      KC_K,     KC_P, ALTTAB, KC_SLSH, KC_ESC,
+                         KC_COMM, KC_BSPC,     KC_SPC,  LT(NUM_LAYER, KC_ENTER)),
 
     [ACCENT_LAYER] = LAYOUT_split_3x5_2(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO, KC_NO, KC_O,  KC_U,  KC_NO,
-            KC_CIRC, KC_DQUO, KC_QUOT, KC_GRV,  KC_NO,      KC_NO, KC_NO, KC_A,  KC_E,  KC_I,
-            US_SS,   KC_NO,   KC_NO,   US_CCED, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO, KC_NO, ACC_O,  ACC_U,  KC_NO,
+            KC_DQUO, KC_CIRC, KC_QUOT, KC_GRV,  KC_NO,      KC_NO, KC_NO, ACC_A,  ACC_E,  ACC_I,
+            US_SS,   KC_NO,   KC_NO,   US_CCED, KC_NO,      KC_NO, KC_NO, KC_NO,  KC_NO,  KC_NO,
 
-                             TO(ALPHA_LAYER), KC_BSPC,      KC_SPC, KC_NO),
+                             TO(ALPHA_LAYER), KC_BSPC,      KC_SPC, OSM(MOD_LSFT)),
 
     [QMK_LAYER] = LAYOUT_split_3x5_2(
             QK_BOOT, KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, QK_RBT,
