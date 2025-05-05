@@ -1,0 +1,795 @@
+<svg width="1000" height="4860.0" viewBox="0 0 1000 4860.0" xmlns="http://www.w3.org/2000/svg">
+<style>
+    svg {
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+        font-kerning: normal;
+        text-rendering: optimizeLegibility;
+        fill: #24292e;
+    }
+
+    /* Default key rectangle */
+    rect {
+        fill: #f6f8fa;
+        stroke: #e1e4e8;
+    }
+
+    /* Default text */
+    text {
+        fill: #24292e;
+    }
+
+    /* Layer name text */
+    text.layer-name {
+        fill: #24292e;
+    }
+
+    /* Dimmed key text */
+    text.label-dim {
+        fill: #ddd;
+    }
+
+    /* Layer toggle (LT) rectangle */
+    rect.layer-rect {
+        fill: #d0e7f5;
+        stroke: transparent;
+    }
+
+    /* Homing key */
+    rect.homing {
+        stroke: #aaa;
+    }
+
+    /* Layer toggle (LT) text */
+    text.hold-action.-layer {
+        fill: #024063;
+    }
+
+    /* Layer toggle (LT) rectangle when held */
+    rect.layer-toggle-held {
+        fill: #d0e7f5;
+    }
+
+    /* Mod-tap (MT) text */
+    text.hold-action.-mod-tap {
+        fill: #da2c38;
+    }
+
+</style>
+<text text-anchor="middle" class="layer-name" font-size="21.0" dominant-baseline="middle" x="500.0" y="150">ALPHA_LAYER</text>
+<rect rx="5" ry="5" x="5" y="215.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="247.5">Q</text>
+<rect rx="5" ry="5" x="90" y="169.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="202.0">L</text>
+<rect rx="5" ry="5" x="175" y="150.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="182.5">D</text>
+<rect rx="5" ry="5" x="260" y="169.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="202.0">W</text>
+<rect rx="5" ry="5" x="345" y="176.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="208.5">Z</text>
+<rect rx="5" ry="5" x="5" y="290.0" width="75" height="65" class="has-hold-action" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="322.5">N</text>
+<text text-anchor="middle" font-size="10.5" class=" hold-action -mod-tap" dominant-baseline="middle" x="42.5" y="349.5">Meh</text>
+<rect rx="5" ry="5" x="90" y="244.5" width="75" height="65" class="has-hold-action" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="277.0">R</text>
+<text text-anchor="middle" font-size="10.5" class=" hold-action -mod-tap" dominant-baseline="middle" x="127.5" y="304.0">Cmd</text>
+<rect rx="5" ry="5" x="175" y="225.0" width="75" height="65" class="has-hold-action" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="257.5">T</text>
+<text text-anchor="middle" font-size="10.5" class=" hold-action -mod-tap" dominant-baseline="middle" x="212.5" y="284.5">Lalt</text>
+<rect rx="5" ry="5" x="260" y="244.5" width="75" height="65" class="has-hold-action" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="277.0">S</text>
+<text text-anchor="middle" font-size="10.5" class=" hold-action -mod-tap" dominant-baseline="middle" x="297.5" y="304.0">Lctl</text>
+<rect rx="5" ry="5" x="345" y="251.0" width="75" height="65" class="has-hold-action" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="283.5">G</text>
+<rect rx="5" ry="5" x="346" y="302.4" width="73" height="12.6" class="layer-rect" />
+<text text-anchor="middle" font-size="10.5" class="hold-action -layer" dominant-baseline="middle" x="382.5" y="309.7">NUM_LAYER</text>
+<rect rx="5" ry="5" x="5" y="365.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="397.5">B</text>
+<rect rx="5" ry="5" x="90" y="319.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="352.0">X</text>
+<rect rx="5" ry="5" x="175" y="300.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="332.5">M</text>
+<rect rx="5" ry="5" x="260" y="319.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="352.0">C</text>
+<rect rx="5" ry="5" x="345" y="326.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="358.5">V</text>
+<rect rx="5" ry="5" x="580" y="176.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="208.5">;</text>
+<rect rx="5" ry="5" x="665" y="169.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="202.0">F</text>
+<rect rx="5" ry="5" x="750" y="150.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="182.5">O</text>
+<rect rx="5" ry="5" x="835" y="169.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="202.0">U</text>
+<rect rx="5" ry="5" x="920" y="215.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="247.5">J</text>
+<rect rx="5" ry="5" x="580" y="251.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="283.5">Y</text>
+<rect rx="5" ry="5" x="665" y="244.5" width="75" height="65" class="has-hold-action" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="277.0">H</text>
+<text text-anchor="middle" font-size="10.5" class=" hold-action -mod-tap" dominant-baseline="middle" x="702.5" y="304.0">Rctl</text>
+<rect rx="5" ry="5" x="750" y="225.0" width="75" height="65" class="has-hold-action" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="257.5">A</text>
+<text text-anchor="middle" font-size="10.5" class=" hold-action -mod-tap" dominant-baseline="middle" x="787.5" y="284.5">Lalt</text>
+<rect rx="5" ry="5" x="835" y="244.5" width="75" height="65" class="has-hold-action" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="277.0">E</text>
+<text text-anchor="middle" font-size="10.5" class=" hold-action -mod-tap" dominant-baseline="middle" x="872.5" y="304.0">Rgui</text>
+<rect rx="5" ry="5" x="920" y="290.0" width="75" height="65" class="has-hold-action" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="322.5">I</text>
+<text text-anchor="middle" font-size="10.5" class=" hold-action -mod-tap" dominant-baseline="middle" x="957.5" y="349.5">Meh</text>
+<rect rx="5" ry="5" x="580" y="326.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="358.5">K</text>
+<rect rx="5" ry="5" x="665" y="319.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="352.0">P</text>
+<rect rx="5" ry="5" x="750" y="300.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="332.5">DOT_ARROW</text>
+<rect rx="5" ry="5" x="835" y="319.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="352.0">,</text>
+<rect rx="5" ry="5" x="920" y="365.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="397.5">-</text>
+<rect rx="5" ry="5" x="294.0" y="412.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="436.35">OSM</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="453.15000000000003">+MOD_LSFT</text>
+<rect rx="5" ry="5" x="379.0" y="412.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="416.5" y="444.75">Bsps</text>
+<rect rx="5" ry="5" x="546.0" y="412.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="583.5" y="444.75">NAV_HOLD</text>
+<rect rx="5" ry="5" x="631.0" y="412.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="668.5" y="444.75">SYM_WIN_LAYER)</text>
+<text text-anchor="middle" class="layer-name" font-size="21.0" dominant-baseline="middle" x="500.0" y="621.0">SYM_LAYER</text>
+<rect rx="5" ry="5" x="5" y="686.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="718.5">^</text>
+<rect rx="5" ry="5" x="90" y="640.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="673.0">~</text>
+<rect rx="5" ry="5" x="175" y="621.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="653.5">#</text>
+<rect rx="5" ry="5" x="260" y="640.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="673.0">:</text>
+<rect rx="5" ry="5" x="345" y="647.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="679.5">`</text>
+<rect rx="5" ry="5" x="5" y="761.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="793.5">&amp;</text>
+<rect rx="5" ry="5" x="90" y="715.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="748.0">*</text>
+<rect rx="5" ry="5" x="175" y="696.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="728.5">[</text>
+<rect rx="5" ry="5" x="260" y="715.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="748.0">(</text>
+<rect rx="5" ry="5" x="345" y="722.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="754.5">{</text>
+<rect rx="5" ry="5" x="5" y="836.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="868.5">$</text>
+<rect rx="5" ry="5" x="90" y="790.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="823.0">Lt</text>
+<rect rx="5" ry="5" x="175" y="771.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="803.5">Gt</text>
+<rect rx="5" ry="5" x="260" y="790.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="823.0">!</text>
+<rect rx="5" ry="5" x="345" y="797.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="829.5">|</text>
+<rect rx="5" ry="5" x="580" y="647.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="679.5">;</text>
+<rect rx="5" ry="5" x="665" y="640.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="673.0">%</text>
+<rect rx="5" ry="5" x="750" y="621.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="653.5">/</text>
+<rect rx="5" ry="5" x="835" y="640.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="673.0">\</text>
+<rect rx="5" ry="5" x="920" y="686.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="957.5" y="718.5">———</text>
+<rect rx="5" ry="5" x="580" y="722.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="754.5">}</text>
+<rect rx="5" ry="5" x="665" y="715.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="748.0">)</text>
+<rect rx="5" ry="5" x="750" y="696.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="728.5">]</text>
+<rect rx="5" ry="5" x="835" y="715.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="748.0">&quot;</text>
+<rect rx="5" ry="5" x="920" y="761.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="793.5">+</text>
+<rect rx="5" ry="5" x="580" y="797.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="829.5">@</text>
+<rect rx="5" ry="5" x="665" y="790.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="823.0">?</text>
+<rect rx="5" ry="5" x="750" y="771.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="803.5">=</text>
+<rect rx="5" ry="5" x="835" y="790.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="823.0">&#x27;</text>
+<rect rx="5" ry="5" x="920" y="836.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="860.1">TO</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="876.9">+FN_LAYER</text>
+<rect rx="5" ry="5" x="294.0" y="883.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="907.35">TO</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="924.15">+ALPHA_LAYER</text>
+<rect rx="5" ry="5" x="379.0" y="883.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="416.5" y="915.75">Bsps</text>
+<rect rx="5" ry="5" x="546.0" y="883.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="583.5" y="915.75">NAV_HOLD</text>
+<rect rx="5" ry="5" x="631.0" y="883.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="668.5" y="907.35">TO</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="668.5" y="924.15">+ACCENT_LAYER</text>
+<text text-anchor="middle" class="layer-name" font-size="21.0" dominant-baseline="middle" x="500.0" y="1092.0">NUM_LAYER</text>
+<rect rx="5" ry="5" x="5" y="1157.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="42.5" y="1189.5">———</text>
+<rect rx="5" ry="5" x="90" y="1111.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="127.5" y="1144.0">———</text>
+<rect rx="5" ry="5" x="175" y="1092.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="212.5" y="1124.5">———</text>
+<rect rx="5" ry="5" x="260" y="1111.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="297.5" y="1144.0">———</text>
+<rect rx="5" ry="5" x="345" y="1118.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="382.5" y="1150.5">———</text>
+<rect rx="5" ry="5" x="5" y="1232.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="1264.5">.</text>
+<rect rx="5" ry="5" x="90" y="1186.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="1219.0">/</text>
+<rect rx="5" ry="5" x="175" y="1167.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="1199.5">*</text>
+<rect rx="5" ry="5" x="260" y="1186.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="1219.0">-</text>
+<rect rx="5" ry="5" x="345" y="1193.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="1225.5">+</text>
+<rect rx="5" ry="5" x="5" y="1307.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="42.5" y="1339.5">———</text>
+<rect rx="5" ry="5" x="90" y="1261.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="127.5" y="1294.0">———</text>
+<rect rx="5" ry="5" x="175" y="1242.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="1274.5">,</text>
+<rect rx="5" ry="5" x="260" y="1261.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="1294.0">,</text>
+<rect rx="5" ry="5" x="345" y="1268.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="382.5" y="1300.5">———</text>
+<rect rx="5" ry="5" x="580" y="1118.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="1150.5">+</text>
+<rect rx="5" ry="5" x="665" y="1111.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="1144.0">7</text>
+<rect rx="5" ry="5" x="750" y="1092.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="1124.5">8</text>
+<rect rx="5" ry="5" x="835" y="1111.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="1144.0">9</text>
+<rect rx="5" ry="5" x="920" y="1157.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="957.5" y="1189.5">———</text>
+<rect rx="5" ry="5" x="580" y="1193.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="1225.5">0</text>
+<rect rx="5" ry="5" x="665" y="1186.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="1219.0">4</text>
+<rect rx="5" ry="5" x="750" y="1167.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="1199.5">5</text>
+<rect rx="5" ry="5" x="835" y="1186.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="1219.0">6</text>
+<rect rx="5" ry="5" x="920" y="1232.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="1264.5">=</text>
+<rect rx="5" ry="5" x="580" y="1268.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="1300.5">-</text>
+<rect rx="5" ry="5" x="665" y="1261.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="1294.0">1</text>
+<rect rx="5" ry="5" x="750" y="1242.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="1274.5">2</text>
+<rect rx="5" ry="5" x="835" y="1261.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="1294.0">3</text>
+<rect rx="5" ry="5" x="920" y="1307.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="957.5" y="1339.5">———</text>
+<rect rx="5" ry="5" x="294.0" y="1354.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="1378.35">TO</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="1395.1499999999999">+ALPHA_LAYER</text>
+<rect rx="5" ry="5" x="379.0" y="1354.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="416.5" y="1386.75">Bsps</text>
+<rect rx="5" ry="5" x="546.0" y="1354.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="583.5" y="1386.75">NAV_HOLD</text>
+<rect rx="5" ry="5" x="631.0" y="1354.25" width="75" height="65" class=" layer-toggle-held" />
+<text text-anchor="middle" font-size="14" class="layer-toggle-held" dominant-baseline="middle" x="668.5" y="1386.75">NUM_LAYER</text>
+<text text-anchor="middle" class="layer-name" font-size="21.0" dominant-baseline="middle" x="500.0" y="1563.0">NAV_LAYER</text>
+<rect rx="5" ry="5" x="5" y="1628.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="42.5" y="1660.5">———</text>
+<rect rx="5" ry="5" x="90" y="1582.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="1615.0">Y</text>
+<rect rx="5" ry="5" x="175" y="1563.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="1595.5">P</text>
+<rect rx="5" ry="5" x="260" y="1582.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="1615.0">Shift</text>
+<rect rx="5" ry="5" x="345" y="1589.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="1621.5">{</text>
+<rect rx="5" ry="5" x="5" y="1703.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="1735.5">W</text>
+<rect rx="5" ry="5" x="90" y="1657.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="1690.0">B</text>
+<rect rx="5" ry="5" x="175" y="1638.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="1670.5">E</text>
+<rect rx="5" ry="5" x="260" y="1657.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="1690.0">Lctl</text>
+<rect rx="5" ry="5" x="345" y="1664.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="1696.5">}</text>
+<rect rx="5" ry="5" x="5" y="1778.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="1802.1">Lsft</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="1818.8999999999999">+V</text>
+<rect rx="5" ry="5" x="90" y="1732.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="1756.6">Lctl</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="1773.3999999999999">+V</text>
+<rect rx="5" ry="5" x="175" y="1713.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="1745.5">V</text>
+<rect rx="5" ry="5" x="260" y="1732.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="1765.0">^</text>
+<rect rx="5" ry="5" x="345" y="1739.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="1771.5">$</text>
+<rect rx="5" ry="5" x="580" y="1589.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="1613.1">Lctl</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="1629.8999999999999">+U</text>
+<rect rx="5" ry="5" x="665" y="1582.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="1615.0">P2</text>
+<rect rx="5" ry="5" x="750" y="1563.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="1595.5">P3</text>
+<rect rx="5" ry="5" x="835" y="1582.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="1615.0">P4</text>
+<rect rx="5" ry="5" x="920" y="1628.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="957.5" y="1660.5">———</text>
+<rect rx="5" ry="5" x="580" y="1664.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="1688.1">Lctl</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="1704.8999999999999">+D</text>
+<rect rx="5" ry="5" x="665" y="1657.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="1690.0">←</text>
+<rect rx="5" ry="5" x="750" y="1638.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="1670.5">↓</text>
+<rect rx="5" ry="5" x="835" y="1657.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="1690.0">↑</text>
+<rect rx="5" ry="5" x="920" y="1703.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="1735.5">→</text>
+<rect rx="5" ry="5" x="580" y="1739.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="1771.5">———</text>
+<rect rx="5" ry="5" x="665" y="1732.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="1765.0">,</text>
+<rect rx="5" ry="5" x="750" y="1713.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="1745.5">;</text>
+<rect rx="5" ry="5" x="835" y="1732.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="872.5" y="1765.0">———</text>
+<rect rx="5" ry="5" x="920" y="1778.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="1810.5">Esc</text>
+<rect rx="5" ry="5" x="294.0" y="1825.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="1849.35">TO</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="1866.1499999999999">+ALPHA_LAYER</text>
+<rect rx="5" ry="5" x="379.0" y="1825.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="416.5" y="1857.75">Lalt</text>
+<rect rx="5" ry="5" x="546.0" y="1825.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="583.5" y="1857.75">———</text>
+<rect rx="5" ry="5" x="631.0" y="1825.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="668.5" y="1857.75">No)</text>
+<text text-anchor="middle" class="layer-name" font-size="21.0" dominant-baseline="middle" x="500.0" y="2034.0">WIN_NAV_LAYER</text>
+<rect rx="5" ry="5" x="5" y="2099.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="42.5" y="2131.5">———</text>
+<rect rx="5" ry="5" x="90" y="2053.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="2086.0">WIN_MIN</text>
+<rect rx="5" ry="5" x="175" y="2034.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="2066.5">WIN_FULL</text>
+<rect rx="5" ry="5" x="260" y="2053.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="297.5" y="2086.0">———</text>
+<rect rx="5" ry="5" x="345" y="2060.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="382.5" y="2092.5">———</text>
+<rect rx="5" ry="5" x="5" y="2174.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="2206.5">WIN_1</text>
+<rect rx="5" ry="5" x="90" y="2128.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="2161.0">WIN_2</text>
+<rect rx="5" ry="5" x="175" y="2109.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="2141.5">WIN_3</text>
+<rect rx="5" ry="5" x="260" y="2128.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="2161.0">WIN_4</text>
+<rect rx="5" ry="5" x="345" y="2135.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="2167.5">WIN_SCL</text>
+<rect rx="5" ry="5" x="5" y="2249.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="42.5" y="2281.5">———</text>
+<rect rx="5" ry="5" x="90" y="2203.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="2236.0">WIN_LEFT</text>
+<rect rx="5" ry="5" x="175" y="2184.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="2216.5">WIN_RIGHT</text>
+<rect rx="5" ry="5" x="260" y="2203.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="2236.0">Alttab</text>
+<rect rx="5" ry="5" x="345" y="2210.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="382.5" y="2242.5">———</text>
+<rect rx="5" ry="5" x="580" y="2060.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="2092.5">———</text>
+<rect rx="5" ry="5" x="665" y="2053.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="702.5" y="2086.0">———</text>
+<rect rx="5" ry="5" x="750" y="2034.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="787.5" y="2066.5">———</text>
+<rect rx="5" ry="5" x="835" y="2053.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="872.5" y="2086.0">———</text>
+<rect rx="5" ry="5" x="920" y="2099.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="957.5" y="2131.5">———</text>
+<rect rx="5" ry="5" x="580" y="2135.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="2167.5">WIN_SCR</text>
+<rect rx="5" ry="5" x="665" y="2128.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="2161.0">WIN_5</text>
+<rect rx="5" ry="5" x="750" y="2109.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="2141.5">WIN_6</text>
+<rect rx="5" ry="5" x="835" y="2128.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="2161.0">WIN_7</text>
+<rect rx="5" ry="5" x="920" y="2174.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="2206.5">WIN_8</text>
+<rect rx="5" ry="5" x="580" y="2210.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="2242.5">———</text>
+<rect rx="5" ry="5" x="665" y="2203.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="702.5" y="2236.0">———</text>
+<rect rx="5" ry="5" x="750" y="2184.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="787.5" y="2216.5">———</text>
+<rect rx="5" ry="5" x="835" y="2203.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="872.5" y="2236.0">———</text>
+<rect rx="5" ry="5" x="920" y="2249.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="957.5" y="2281.5">———</text>
+<rect rx="5" ry="5" x="294.0" y="2296.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="2320.35">Lctl</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="2337.15">+Lsft</text>
+<rect rx="5" ry="5" x="379.0" y="2296.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="416.5" y="2328.75">Run</text>
+<rect rx="5" ry="5" x="546.0" y="2296.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="583.5" y="2328.75">———</text>
+<rect rx="5" ry="5" x="631.0" y="2296.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="668.5" y="2328.75">No)</text>
+<text text-anchor="middle" class="layer-name" font-size="21.0" dominant-baseline="middle" x="500.0" y="2505.0">FN_LAYER</text>
+<rect rx="5" ry="5" x="5" y="2570.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="2594.1">TO</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="2610.9">+QMK_LAYER</text>
+<rect rx="5" ry="5" x="90" y="2524.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="127.5" y="2557.0">———</text>
+<rect rx="5" ry="5" x="175" y="2505.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="212.5" y="2537.5">———</text>
+<rect rx="5" ry="5" x="260" y="2524.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="297.5" y="2557.0">———</text>
+<rect rx="5" ry="5" x="345" y="2531.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="382.5" y="2563.5">———</text>
+<rect rx="5" ry="5" x="5" y="2645.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="2677.5">Undo</text>
+<rect rx="5" ry="5" x="90" y="2599.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="2632.0">Cut</text>
+<rect rx="5" ry="5" x="175" y="2580.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="2612.5">Copy</text>
+<rect rx="5" ry="5" x="260" y="2599.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="2632.0">Paste</text>
+<rect rx="5" ry="5" x="345" y="2606.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="2638.5">Find</text>
+<rect rx="5" ry="5" x="5" y="2720.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="42.5" y="2752.5">———</text>
+<rect rx="5" ry="5" x="90" y="2674.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="127.5" y="2707.0">———</text>
+<rect rx="5" ry="5" x="175" y="2655.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="212.5" y="2687.5">———</text>
+<rect rx="5" ry="5" x="260" y="2674.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="297.5" y="2707.0">———</text>
+<rect rx="5" ry="5" x="345" y="2681.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="382.5" y="2713.5">———</text>
+<rect rx="5" ry="5" x="580" y="2531.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="2563.5">———</text>
+<rect rx="5" ry="5" x="665" y="2524.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="2557.0">F7</text>
+<rect rx="5" ry="5" x="750" y="2505.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="2537.5">F8</text>
+<rect rx="5" ry="5" x="835" y="2524.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="2557.0">F9</text>
+<rect rx="5" ry="5" x="920" y="2570.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="2602.5">F12</text>
+<rect rx="5" ry="5" x="580" y="2606.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="2638.5">———</text>
+<rect rx="5" ry="5" x="665" y="2599.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="2632.0">F4</text>
+<rect rx="5" ry="5" x="750" y="2580.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="2612.5">F5</text>
+<rect rx="5" ry="5" x="835" y="2599.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="2632.0">F6</text>
+<rect rx="5" ry="5" x="920" y="2645.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="2677.5">F11</text>
+<rect rx="5" ry="5" x="580" y="2681.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="2713.5">———</text>
+<rect rx="5" ry="5" x="665" y="2674.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="2707.0">F1</text>
+<rect rx="5" ry="5" x="750" y="2655.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="2687.5">F2</text>
+<rect rx="5" ry="5" x="835" y="2674.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="2707.0">F3</text>
+<rect rx="5" ry="5" x="920" y="2720.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="2752.5">F10</text>
+<rect rx="5" ry="5" x="294.0" y="2767.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="2791.35">TO</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="2808.15">+ALPHA_LAYER</text>
+<rect rx="5" ry="5" x="379.0" y="2767.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="416.5" y="2799.75">Run</text>
+<rect rx="5" ry="5" x="546.0" y="2767.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="583.5" y="2791.35">TO</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="583.5" y="2808.15">+GAMING_LAYER</text>
+<rect rx="5" ry="5" x="631.0" y="2767.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="668.5" y="2791.35">TO</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="668.5" y="2808.15">+MEDIA_LAYER</text>
+<text text-anchor="middle" class="layer-name" font-size="21.0" dominant-baseline="middle" x="500.0" y="2976.0">MEDIA_LAYER</text>
+<rect rx="5" ry="5" x="5" y="3041.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="42.5" y="3073.5">———</text>
+<rect rx="5" ry="5" x="90" y="2995.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="127.5" y="3028.0">———</text>
+<rect rx="5" ry="5" x="175" y="2976.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="3000.1">Vol</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="3016.9">Up</text>
+<rect rx="5" ry="5" x="260" y="2995.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="297.5" y="3028.0">———</text>
+<rect rx="5" ry="5" x="345" y="3002.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="382.5" y="3034.5">———</text>
+<rect rx="5" ry="5" x="5" y="3116.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="3148.5">Mute</text>
+<rect rx="5" ry="5" x="90" y="3070.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="3103.0">Mprv</text>
+<rect rx="5" ry="5" x="175" y="3051.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="3075.1">Play/</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="3091.9">Pause</text>
+<rect rx="5" ry="5" x="260" y="3070.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="3103.0">Mnxt</text>
+<rect rx="5" ry="5" x="345" y="3077.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="382.5" y="3109.5">———</text>
+<rect rx="5" ry="5" x="5" y="3191.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="42.5" y="3223.5">———</text>
+<rect rx="5" ry="5" x="90" y="3145.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="127.5" y="3178.0">———</text>
+<rect rx="5" ry="5" x="175" y="3126.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="3150.1">Vol</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="3166.9">Down</text>
+<rect rx="5" ry="5" x="260" y="3145.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="297.5" y="3178.0">———</text>
+<rect rx="5" ry="5" x="345" y="3152.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="382.5" y="3184.5">———</text>
+<rect rx="5" ry="5" x="580" y="3002.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="3034.5">———</text>
+<rect rx="5" ry="5" x="665" y="2995.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="702.5" y="3028.0">———</text>
+<rect rx="5" ry="5" x="750" y="2976.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="3008.5">MS_BTN3</text>
+<rect rx="5" ry="5" x="835" y="2995.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="872.5" y="3028.0">———</text>
+<rect rx="5" ry="5" x="920" y="3041.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="957.5" y="3073.5">———</text>
+<rect rx="5" ry="5" x="580" y="3077.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="3109.5">———</text>
+<rect rx="5" ry="5" x="665" y="3070.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="3094.6">Mouse</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="3111.4">Left</text>
+<rect rx="5" ry="5" x="750" y="3051.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="3075.1">Mouse</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="3091.9">Down</text>
+<rect rx="5" ry="5" x="835" y="3070.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="3094.6">Mouse</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="3111.4">Up</text>
+<rect rx="5" ry="5" x="920" y="3116.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="3140.1">Mouse</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="3156.9">Right</text>
+<rect rx="5" ry="5" x="580" y="3152.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="3184.5">———</text>
+<rect rx="5" ry="5" x="665" y="3145.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="3161.2">Mouse</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="3178.0">Wheel</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="3194.8">Left</text>
+<rect rx="5" ry="5" x="750" y="3126.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="3141.7">Mouse</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="3158.5">Wheel</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="3175.3">Down</text>
+<rect rx="5" ry="5" x="835" y="3145.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="3161.2">Mouse</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="3178.0">Wheel</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="3194.8">Up</text>
+<rect rx="5" ry="5" x="920" y="3191.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="3206.7">Mouse</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="3223.5">Wheel</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="3240.3">Right</text>
+<rect rx="5" ry="5" x="294.0" y="3238.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="3262.35">TO</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="3279.15">+ALPHA_LAYER</text>
+<rect rx="5" ry="5" x="379.0" y="3238.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="416.5" y="3270.75">MS_BTN1</text>
+<rect rx="5" ry="5" x="546.0" y="3238.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="583.5" y="3270.75">MS_BTN2</text>
+<rect rx="5" ry="5" x="631.0" y="3238.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="668.5" y="3270.75">No)</text>
+<text text-anchor="middle" class="layer-name" font-size="21.0" dominant-baseline="middle" x="500.0" y="3447.0">GAMING_LAYER</text>
+<rect rx="5" ry="5" x="5" y="3512.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="3544.5">Q</text>
+<rect rx="5" ry="5" x="90" y="3466.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="3499.0">L</text>
+<rect rx="5" ry="5" x="175" y="3447.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="3479.5">D</text>
+<rect rx="5" ry="5" x="260" y="3466.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="3499.0">W</text>
+<rect rx="5" ry="5" x="345" y="3473.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="3505.5">Z</text>
+<rect rx="5" ry="5" x="5" y="3587.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="3619.5">N</text>
+<rect rx="5" ry="5" x="90" y="3541.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="3574.0">R</text>
+<rect rx="5" ry="5" x="175" y="3522.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="3554.5">T</text>
+<rect rx="5" ry="5" x="260" y="3541.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="3574.0">S</text>
+<rect rx="5" ry="5" x="345" y="3548.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="3580.5">G</text>
+<rect rx="5" ry="5" x="5" y="3662.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="3694.5">B</text>
+<rect rx="5" ry="5" x="90" y="3616.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="3649.0">X</text>
+<rect rx="5" ry="5" x="175" y="3597.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="3629.5">M</text>
+<rect rx="5" ry="5" x="260" y="3616.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="3649.0">C</text>
+<rect rx="5" ry="5" x="345" y="3623.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="3655.5">V</text>
+<rect rx="5" ry="5" x="580" y="3473.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="3497.1">TO</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="3513.9">+ALPHA_LAYER</text>
+<rect rx="5" ry="5" x="665" y="3466.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="3499.0">F</text>
+<rect rx="5" ry="5" x="750" y="3447.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="3479.5">O</text>
+<rect rx="5" ry="5" x="835" y="3466.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="3499.0">U</text>
+<rect rx="5" ry="5" x="920" y="3512.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="3544.5">J</text>
+<rect rx="5" ry="5" x="580" y="3548.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="3580.5">Y</text>
+<rect rx="5" ry="5" x="665" y="3541.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="3574.0">H</text>
+<rect rx="5" ry="5" x="750" y="3522.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="3554.5">A</text>
+<rect rx="5" ry="5" x="835" y="3541.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="3574.0">E</text>
+<rect rx="5" ry="5" x="920" y="3587.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="3619.5">I</text>
+<rect rx="5" ry="5" x="580" y="3623.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="617.5" y="3655.5">K</text>
+<rect rx="5" ry="5" x="665" y="3616.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="702.5" y="3649.0">P</text>
+<rect rx="5" ry="5" x="750" y="3597.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="3629.5">Alttab</text>
+<rect rx="5" ry="5" x="835" y="3616.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="3649.0">/</text>
+<rect rx="5" ry="5" x="920" y="3662.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="3694.5">Esc</text>
+<rect rx="5" ry="5" x="294.0" y="3709.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="3741.75">,</text>
+<rect rx="5" ry="5" x="379.0" y="3709.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="416.5" y="3741.75">Bsps</text>
+<rect rx="5" ry="5" x="546.0" y="3709.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="583.5" y="3741.75">Space</text>
+<rect rx="5" ry="5" x="631.0" y="3709.25" width="75" height="65" class="has-hold-action" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="668.5" y="3741.75">Enter)</text>
+<rect rx="5" ry="5" x="632.0" y="3760.65" width="73" height="12.6" class="layer-rect" />
+<text text-anchor="middle" font-size="10.5" class="hold-action -layer" dominant-baseline="middle" x="668.5" y="3767.95">NUM_LAYER</text>
+<text text-anchor="middle" class="layer-name" font-size="21.0" dominant-baseline="middle" x="500.0" y="3918.0">ACCENT_LAYER</text>
+<rect rx="5" ry="5" x="5" y="3983.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="42.5" y="4015.5">———</text>
+<rect rx="5" ry="5" x="90" y="3937.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="127.5" y="3970.0">———</text>
+<rect rx="5" ry="5" x="175" y="3918.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="212.5" y="3950.5">———</text>
+<rect rx="5" ry="5" x="260" y="3937.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="297.5" y="3970.0">———</text>
+<rect rx="5" ry="5" x="345" y="3944.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="382.5" y="3976.5">———</text>
+<rect rx="5" ry="5" x="5" y="4058.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="4090.5">&quot;</text>
+<rect rx="5" ry="5" x="90" y="4012.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="127.5" y="4045.0">^</text>
+<rect rx="5" ry="5" x="175" y="3993.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="212.5" y="4025.5">&#x27;</text>
+<rect rx="5" ry="5" x="260" y="4012.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="4045.0">`</text>
+<rect rx="5" ry="5" x="345" y="4019.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="382.5" y="4051.5">———</text>
+<rect rx="5" ry="5" x="5" y="4133.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="4165.5">US_SS</text>
+<rect rx="5" ry="5" x="90" y="4087.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="127.5" y="4120.0">———</text>
+<rect rx="5" ry="5" x="175" y="4068.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="212.5" y="4100.5">———</text>
+<rect rx="5" ry="5" x="260" y="4087.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="297.5" y="4120.0">US_CCED</text>
+<rect rx="5" ry="5" x="345" y="4094.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="382.5" y="4126.5">———</text>
+<rect rx="5" ry="5" x="580" y="3944.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="3976.5">———</text>
+<rect rx="5" ry="5" x="665" y="3937.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="702.5" y="3970.0">———</text>
+<rect rx="5" ry="5" x="750" y="3918.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="3950.5">ACC_O</text>
+<rect rx="5" ry="5" x="835" y="3937.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="3970.0">ACC_U</text>
+<rect rx="5" ry="5" x="920" y="3983.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="957.5" y="4015.5">———</text>
+<rect rx="5" ry="5" x="580" y="4019.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="4051.5">———</text>
+<rect rx="5" ry="5" x="665" y="4012.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="702.5" y="4045.0">———</text>
+<rect rx="5" ry="5" x="750" y="3993.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="787.5" y="4025.5">ACC_A</text>
+<rect rx="5" ry="5" x="835" y="4012.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="872.5" y="4045.0">ACC_E</text>
+<rect rx="5" ry="5" x="920" y="4058.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="4090.5">ACC_I</text>
+<rect rx="5" ry="5" x="580" y="4094.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="4126.5">———</text>
+<rect rx="5" ry="5" x="665" y="4087.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="702.5" y="4120.0">———</text>
+<rect rx="5" ry="5" x="750" y="4068.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="787.5" y="4100.5">———</text>
+<rect rx="5" ry="5" x="835" y="4087.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="872.5" y="4120.0">———</text>
+<rect rx="5" ry="5" x="920" y="4133.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="957.5" y="4165.5">———</text>
+<rect rx="5" ry="5" x="294.0" y="4180.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="4204.35">TO</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="4221.150000000001">+ALPHA_LAYER</text>
+<rect rx="5" ry="5" x="379.0" y="4180.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="416.5" y="4212.75">Bsps</text>
+<rect rx="5" ry="5" x="546.0" y="4180.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="583.5" y="4212.75">Space</text>
+<rect rx="5" ry="5" x="631.0" y="4180.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="668.5" y="4204.35">OSM</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="668.5" y="4221.150000000001">+MOD_LSFT</text>
+<text text-anchor="middle" class="layer-name" font-size="21.0" dominant-baseline="middle" x="500.0" y="4389.0">QMK_LAYER</text>
+<rect rx="5" ry="5" x="5" y="4454.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="4486.5">QK_BOOT</text>
+<rect rx="5" ry="5" x="90" y="4408.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="127.5" y="4441.0">———</text>
+<rect rx="5" ry="5" x="175" y="4389.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="212.5" y="4421.5">———</text>
+<rect rx="5" ry="5" x="260" y="4408.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="297.5" y="4441.0">———</text>
+<rect rx="5" ry="5" x="345" y="4415.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="382.5" y="4447.5">———</text>
+<rect rx="5" ry="5" x="5" y="4529.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="42.5" y="4561.5">———</text>
+<rect rx="5" ry="5" x="90" y="4483.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="127.5" y="4516.0">———</text>
+<rect rx="5" ry="5" x="175" y="4464.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="212.5" y="4496.5">———</text>
+<rect rx="5" ry="5" x="260" y="4483.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="297.5" y="4516.0">———</text>
+<rect rx="5" ry="5" x="345" y="4490.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="382.5" y="4522.5">UG_TOGG</text>
+<rect rx="5" ry="5" x="5" y="4604.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="42.5" y="4636.5">EE_CLR</text>
+<rect rx="5" ry="5" x="90" y="4558.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="127.5" y="4591.0">———</text>
+<rect rx="5" ry="5" x="175" y="4539.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="212.5" y="4571.5">———</text>
+<rect rx="5" ry="5" x="260" y="4558.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="297.5" y="4591.0">———</text>
+<rect rx="5" ry="5" x="345" y="4565.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="382.5" y="4597.5">———</text>
+<rect rx="5" ry="5" x="580" y="4415.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="4447.5">———</text>
+<rect rx="5" ry="5" x="665" y="4408.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="702.5" y="4441.0">———</text>
+<rect rx="5" ry="5" x="750" y="4389.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="787.5" y="4421.5">———</text>
+<rect rx="5" ry="5" x="835" y="4408.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="872.5" y="4441.0">———</text>
+<rect rx="5" ry="5" x="920" y="4454.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="957.5" y="4486.5">QK_RBT</text>
+<rect rx="5" ry="5" x="580" y="4490.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="4522.5">———</text>
+<rect rx="5" ry="5" x="665" y="4483.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="702.5" y="4516.0">———</text>
+<rect rx="5" ry="5" x="750" y="4464.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="787.5" y="4496.5">———</text>
+<rect rx="5" ry="5" x="835" y="4483.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="872.5" y="4516.0">———</text>
+<rect rx="5" ry="5" x="920" y="4529.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="957.5" y="4561.5">———</text>
+<rect rx="5" ry="5" x="580" y="4565.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="617.5" y="4597.5">———</text>
+<rect rx="5" ry="5" x="665" y="4558.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="702.5" y="4591.0">———</text>
+<rect rx="5" ry="5" x="750" y="4539.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="787.5" y="4571.5">———</text>
+<rect rx="5" ry="5" x="835" y="4558.5" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="872.5" y="4591.0">———</text>
+<rect rx="5" ry="5" x="920" y="4604.0" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="957.5" y="4636.5">———</text>
+<rect rx="5" ry="5" x="294.0" y="4651.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="4675.35">TO</text>
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="331.5" y="4692.150000000001">+ALPHA_LAYER</text>
+<rect rx="5" ry="5" x="379.0" y="4651.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="416.5" y="4683.75">———</text>
+<rect rx="5" ry="5" x="546.0" y="4651.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="label-dim" dominant-baseline="middle" x="583.5" y="4683.75">———</text>
+<rect rx="5" ry="5" x="631.0" y="4651.25" width="75" height="65" class="" />
+<text text-anchor="middle" font-size="14" class="" dominant-baseline="middle" x="668.5" y="4683.75">No)</text>
+</svg>

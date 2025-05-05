@@ -69,44 +69,55 @@ const key_override_t vim_undo_redo_ko = ko_make_with_layers(MOD_MASK_SHIFT, KC_U
 const key_override_t vim_ctrlV_ko     = ko_make_with_layers(MOD_MASK_ALT, KC_V, LCTL(KC_V), 1 << NAV_LAYER);
 
 // This globally defines all key overrides to be used
-const key_override_t** key_overrides = (const key_override_t*[]){
+const key_override_t* key_overrides[] = {
     &space_ko,
     &vimf_ko,
     &vimt_ko,
-    &vim_undo_redo_ko,
     &vim_ctrlV_ko,
-    NULL  // Null terminate the array of overrides!
+    &vim_undo_redo_ko,
 };
 
 //////////////////////////////// COMBOS ///////////////////////////////////////
-enum Combos
+#ifdef COMB
+#undef COMB
+#endif
+
+#define COMB(name, action, ...) C_##name,
+enum myCombos
 {
-    ENTER_COMBO,
-    ENTER_GAMING_COMBO,
-    ESC_COMBO,
-    AE_COMBO,
-    ESC_LAYER_COMBO,
-    NUM_LAYER_COMBO,
+#include "combos.def"
 };
-const uint16_t PROGMEM enter_combo[]        = {KC_BSPC, NAV_HOLD, COMBO_END};
-const uint16_t PROGMEM enter_gaming_combo[] = {KC_BSPC, KC_SPC, COMBO_END};
-const uint16_t PROGMEM esc_combo[]          = {KC_BSPC, OSM(MOD_LSFT), COMBO_END};
-const uint16_t PROGMEM esc_layer_combo[]    = {KC_BSPC, TO(ALPHA_LAYER), COMBO_END};
-const uint16_t PROGMEM num_layer_combo[]    = {NAV_HOLD, SYM_WIN_LAYER, COMBO_END};
-const uint16_t PROGMEM ae_combo[]           = {KC_A, KC_E, COMBO_END};
-combo_t key_combos[]                        = {
-    [ENTER_COMBO]        = COMBO(enter_combo, KC_ENTER),
-    [ENTER_GAMING_COMBO] = COMBO(enter_gaming_combo, KC_ENTER),
-    [ESC_COMBO]          = COMBO(esc_combo, KC_ESC),
-    [AE_COMBO]           = COMBO(ae_combo, US_AE),
-    [ESC_LAYER_COMBO]    = COMBO(esc_layer_combo, ESC_ALPHA_LAYER),
-    [NUM_LAYER_COMBO]    = COMBO(num_layer_combo, TO(NUM_LAYER)),
+#undef COMB
+
+#define COMB(name, action, ...) const uint16_t PROGMEM name##_combo[] = {__VA_ARGS__, COMBO_END};
+#include "combos.def"
+#undef COMB
+
+#define COMB(name, action, ...) [C_##name] = COMBO(name##_combo, action),
+combo_t key_combos[] = {
+#include "combos.def"
 };
+#undef COMB
+
+#ifdef COMBO_TERM_PER_COMBO
+uint16_t get_combo_term(uint16_t combo_index, combo_t* combo)
+{
+    switch(combo_index)
+    {
+    case C_enter:
+    case C_enter_gaming:
+        return 50;
+    }
+
+    return COMBO_TERM;
+}
+#endif
+
 bool combo_should_trigger(uint16_t combo_index, combo_t* combo, uint16_t keycode, keyrecord_t* record)
 {
     switch(combo_index)
     {
-    case AE_COMBO:
+    case C_ae:
         // Only trigger ae combo on the accent layer.
         if(!layer_state_is(ACCENT_LAYER))
         {
@@ -148,6 +159,8 @@ bool achordion_chord(uint16_t tap_hold_keycode,
         }
     }
     if(tap_hold_keycode == NAV_HOLD)
+        return true;
+    if(other_keycode == OSM(MOD_LSFT))
         return true;
     return achordion_opposite_hands(tap_hold_record, other_record);
 }
@@ -548,9 +561,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             TO(ALPHA_LAYER), KC_BSPC,        NAV_HOLD,   TO(ACCENT_LAYER)),
 
     [NUM_LAYER] = LAYOUT_split_3x5_2(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_PPLS,   KC_P7, KC_P8, KC_P9, KC_NO,
-            KC_PDOT, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS,    KC_P0,     KC_P4, KC_P5, KC_P6, KC_EQL,
-            KC_NO,   KC_NO,   KC_COMM, KC_COMM, KC_NO,      KC_PMNS,   KC_P1, KC_P2, KC_P3, KC_NO,
+            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_PPLS,   KC_7, KC_8, KC_9, KC_NO,
+            KC_DOT,  KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS,    KC_0,      KC_4, KC_5, KC_6, KC_EQL,
+            KC_NO,   KC_NO,   KC_COMM, KC_COMM, KC_NO,      KC_PMNS,   KC_1, KC_2, KC_3, KC_NO,
 
                                TO(ALPHA_LAYER), KC_BSPC,    NAV_HOLD, TO(SYM_LAYER)),
 
@@ -583,11 +596,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           TO(ALPHA_LAYER), KC_MS_BTN1,      KC_MS_BTN2, KC_NO),
 
     [GAMING_LAYER] = LAYOUT_split_3x5_2(
-            // KC_Q, KC_W, KC_E, KC_R, KC_T,      KC_Y, KC_U, KC_I, KC_O, KC_P,
-            // KC_A, KC_S, KC_D, KC_F, KC_G,      KC_H, KC_J, KC_K, KC_L, KC_NO,
-            // KC_Z, KC_X, KC_C, KC_V, KC_B,      KC_N, KC_M, KC_NO, KC_NO, KC_ESC,
-            //              KC_COMM, KC_SPC,      ALTTAB, TO(ALPHA_LAYER)),
-
             KC_Q, KC_L, KC_D, KC_W, KC_Z,      TO(ALPHA_LAYER),  KC_F, KC_O, KC_U, KC_J,
             KC_N, KC_R, KC_T, KC_S, KC_G,      KC_Y,     KC_H, KC_A, KC_E, KC_I,
             KC_B, KC_X, KC_M, KC_C, KC_V,      KC_K,     KC_P, ALTTAB, KC_SLSH, KC_ESC,
@@ -602,7 +610,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [QMK_LAYER] = LAYOUT_split_3x5_2(
             QK_BOOT, KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, QK_RBT,
-            KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+            KC_NO,   KC_NO, KC_NO, KC_NO, UG_TOGG,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
             EE_CLR,  KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
 
                          TO(ALPHA_LAYER), KC_NO,      KC_NO, KC_NO)
@@ -637,10 +645,13 @@ void oneshot_mods_changed_user(uint8_t mods)
     }
     else
     {
-        setPinOutput(24);
-        // Turn the LED off
-        // (Due to technical reasons, high is off and low is on)
-        writePinHigh(24);
+        if(!is_caps_word_on())
+        {
+            setPinOutput(24);
+            // Turn the LED off
+            // (Due to technical reasons, high is off and low is on)
+            writePinHigh(24);
+        }
     }
 }
 void caps_word_set_user(bool active)
@@ -699,10 +710,3 @@ void housekeeping_task_user(void)
         break;
     }
 }
-
-
-#if defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-
-};
-#endif  // defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)

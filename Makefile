@@ -14,3 +14,4 @@ endif
 
 %:
 	+$(MAKE) -C $(QMK_FIRMWARE_ROOT) $(MAKECMDGOALS) QMK_USERSPACE=$(QMK_USERSPACE)
+	python ../qmk-keymap-svg/main.py keyboards/ferris/sweep/keymaps/TK_graphite/keymap.c

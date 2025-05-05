@@ -1,13 +1,16 @@
+#define EE_HANDS
+
+
 #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
 #undef WS2812_DI_PIN
 #define WS2812_DI_PIN 25
-#undef RGBLED_NUM
-#define RGBLED_NUM 2
+#undef RGBLIGHT_LED_COUNT
+#define RGBLIGHT_LED_COUNT 2
 #undef RGBLED_SPLIT
-#define RGBLED_SPLIT \
-    {                \
-        1, 1         \
-    }
+#define RGBLED_SPLIT {1, 1}
+#undef RGBLED_SPLIT
+#define RGBLIGHT_SPLIT {1, 1}
+#define SPLIT_LED_STATE_ENABLE
 
 #define MOUSEKEY_INTERVAL    16
 #define MOUSEKEY_MAX_SPEED   7
@@ -18,3 +21,6 @@
 #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM 0
 #define ACHORDION_STREAK
+
+#define COMBO_TERM 30
+#define COMBO_TERM_PER_COMBO
